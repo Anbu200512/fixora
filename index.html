@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fixora | Home Appliance Repair Service</title>
+  <meta name="description" content="Fixora — quick home appliance repair in Mumbai. Refrigerator, washing machine, AC, TV, microwave, geyser and more. Transparent pricing, trusted technicians, 30-day warranty.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231d4ed8'/%3E%3Cstop offset='1' stop-color='%230d9488'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
+  <script>!function(){try{var t=JSON.parse(localStorage.getItem('fixora_theme')||'null');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}}();</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eef6ff',100:'#d9eaff',200:'#bcd9ff',300:'#8ec0ff',400:'#599dff',500:'#3378f6',600:'#1d5be0',700:'#1847b6',800:'#183d8f',900:'#0f2a63',950:'#0a1c42' }
+          },
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body data-page="index" class="bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-white">
+  <div id="fx-navbar"></div>
+
+  <!-- ============ HERO ============ -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 text-slate-900 dark:from-slate-950 dark:to-slate-900 dark:text-white">
+    <div class="pointer-events-none absolute -top-24 end-0 h-96 w-96 rounded-full bg-teal-500/20 blur-3xl"></div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 pt-14 sm:px-6 lg:grid-cols-2 lg:px-8 lg:pb-24 lg:pt-20">
+      <div class="fx-fade-up">
+        <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-teal-700 ring-1 ring-teal-100 dark:bg-teal-500/10 dark:text-teal-300 dark:ring-teal-500/20"><i data-lucide="zap" class="h-3.5 w-3.5"></i> Technicians at your doorstep in 60 minutes</span>
+        <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-[3.4rem]">Quick Repairs.<br>Tru<span class="text-teal-600 dark:text-teal-400">st</span>ed Technicians.</h1>
+        <p class="mt-5 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">Refrigerator, washing machine, AC, TV, geyser and more — booked online, fixed at home with transparent pricing and a 30-day workmanship warranty.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="dashboard.html" class="inline-flex items-center gap-2 rounded-xl bg-brand-700 px-6 py-3 text-sm font-extrabold text-white shadow-lg transition hover:bg-brand-800"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book a Repair</a>
+          <a href="services.html" class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-slate-800 ring-1 ring-slate-200 transition hover:bg-slate-50 dark:bg-white/10 dark:text-white dark:ring-white/25 dark:hover:bg-white/20"><i data-lucide="wrench" class="h-4 w-4"></i>Explore Services</a>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-slate-600 dark:text-slate-300">
+          <span class="flex items-center gap-2"><i data-lucide="badge-check" class="h-4 w-4 text-teal-500 dark:text-teal-400"></i>Verified technicians</span>
+          <span class="flex items-center gap-2"><i data-lucide="shield-check" class="h-4 w-4 text-teal-500 dark:text-teal-400"></i>Free inspection on approval</span>
+          <span class="flex items-center gap-2"><i data-lucide="timer" class="h-4 w-4 text-teal-500 dark:text-teal-400"></i>Same-day slots</span>
+        </div>
+        <form id="fxQuickBook" class="mt-8 flex max-w-md items-center gap-2 rounded-2xl bg-white p-2 shadow-2xl ring-1 ring-slate-200 dark:bg-slate-900 dark:ring-slate-700">
+          <div class="relative flex-1">
+            <i data-lucide="tv" class="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"></i>
+            <select id="qbAppliance" class="w-full appearance-none rounded-xl bg-slate-50 py-2.5 ps-9 pe-8 text-sm font-semibold text-slate-800 focus:outline-none">
+              <option value="Refrigerator">Refrigerator</option>
+              <option value="Washing Machine">Washing Machine</option>
+              <option value="Air Conditioner">Air Conditioner</option>
+              <option value="Television">Television</option>
+              <option value="Microwave Oven">Microwave Oven</option>
+              <option value="Dishwasher">Dishwasher</option>
+              <option value="Water Heater">Water Heater</option>
+              <option value="Kitchen Appliance">Kitchen Appliance</option>
+            </select>
+            <i data-lucide="chevron-down" class="pointer-events-none absolute end-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 rtl-flip"></i>
+          </div>
+          <button type="submit" class="shrink-0 rounded-xl bg-brand-700 px-5 py-2.5 text-sm font-extrabold text-white transition hover:bg-brand-800">Book Now</button>
+        </form>
+        <p class="mt-3 text-xs text-slate-500 dark:text-slate-400">Demo website — bookings are simulated and stored only in your browser.</p>
+      </div>
+
+      <div class="relative fx-fade-up">
+        <div class="overflow-hidden rounded-3xl shadow-2xl ring-1 ring-slate-200 dark:ring-white/20">
+          <img src="https://images.pexels.com/photos/37492290/pexels-photo-37492290.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Fixora technician repairing an appliance" class="h-[420px] w-full object-cover sm:h-[480px]">
+        </div>
+        <div class="absolute -bottom-5 -start-3 rounded-2xl bg-white p-4 text-slate-800 shadow-2xl sm:-start-6">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600"><i data-lucide="check-circle" class="h-5 w-5"></i></span>
+            <div><p class="text-lg font-extrabold leading-none">12,000+</p><p class="mt-1 text-xs font-semibold text-slate-500">Repairs completed</p></div>
+          </div>
+        </div>
+        <div class="absolute -top-4 end-2 flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-slate-800 shadow-2xl sm:end-6">
+          <span class="flex items-center gap-0.5 text-amber-500"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></span>
+          <div class="text-xs"><p class="font-extrabold leading-none">4.9 / 5</p><p class="mt-0.5 text-slate-500">8,200+ reviews</p></div>
+        </div>
+        <div class="absolute end-2 top-1/2 hidden rounded-2xl bg-brand-700/90 px-4 py-3 text-white shadow-xl backdrop-blur sm:block">
+          <p class="text-xs font-bold uppercase tracking-wider text-teal-200">Avg. fix time</p>
+          <p class="mt-0.5 flex items-center gap-1 text-lg font-extrabold"><i data-lucide="clock" class="h-4 w-4"></i>Under 2 hrs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="border-b border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-10 sm:px-6 lg:grid-cols-4 lg:px-8">
+      <div class="text-center">
+        <p class="text-3xl font-extrabold text-brand-700 dark:text-blue-400">12,000+</p>
+        <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-400">Repairs completed</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl font-extrabold text-brand-700 dark:text-blue-400">85+</p>
+        <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-400">Expert technicians</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl font-extrabold text-brand-700 dark:text-blue-400">4.9/5</p>
+        <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-400">Average rating</p>
+      </div>
+      <div class="text-center">
+        <p class="text-3xl font-extrabold text-teal-600 dark:text-teal-400">30-day</p>
+        <p class="mt-1 text-sm font-semibold text-slate-500 dark:text-slate-400">Service warranty</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES PREVIEW ============ -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"><i data-lucide="wrench" class="h-3.5 w-3.5"></i>What we fix</span>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Appliances we repair</h2>
+      <p class="mt-3 text-base leading-relaxed text-slate-600 dark:text-slate-300">From daily essentials to big-ticket appliances — one trusted repair partner for your whole home.</p>
+    </div>
+
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <a href="services.html#sv-fridge" class="fx-hover-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="relative h-44 overflow-hidden"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80" alt="Refrigerator repair" class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div></div>
+        <div class="flex items-center justify-between p-5">
+          <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white"><i data-lucide="snowflake" class="h-5 w-5"></i></span>
+            <div><h3 class="font-extrabold text-slate-900 dark:text-white">Refrigerator</h3><p class="text-xs text-slate-500 dark:text-slate-400">Cooling, gas, leaks</p></div></div>
+          <span class="text-sm font-bold text-teal-600 dark:text-teal-400">₹499</span>
+        </div>
+      </a>
+      <a href="services.html#sv-washing" class="fx-hover-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="relative h-44 overflow-hidden"><img src="https://images.unsplash.com/photo-1604349779478-ed111effa081?auto=format&fit=crop&w=900&q=80" alt="Washing machine repair" class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div></div>
+        <div class="flex items-center justify-between p-5">
+          <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white"><i data-lucide="washing-machine" class="h-5 w-5"></i></span>
+            <div><h3 class="font-extrabold text-slate-900 dark:text-white">Washing Machine</h3><p class="text-xs text-slate-500 dark:text-slate-400">Drum, pump, motor</p></div></div>
+          <span class="text-sm font-bold text-teal-600 dark:text-teal-400">₹399</span>
+        </div>
+      </a>
+      <a href="services.html#sv-ac" class="fx-hover-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="relative h-44 overflow-hidden"><img src="https://images.unsplash.com/photo-1604636559893-a748bfecfa0e?auto=format&fit=crop&w=900&q=80" alt="Air conditioner repair" class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div></div>
+        <div class="flex items-center justify-between p-5">
+          <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white"><i data-lucide="air-vent" class="h-5 w-5"></i></span>
+            <div><h3 class="font-extrabold text-slate-900 dark:text-white">Air Conditioner</h3><p class="text-xs text-slate-500 dark:text-slate-400">Gas, cleaning, PCB</p></div></div>
+          <span class="text-sm font-bold text-teal-600 dark:text-teal-400">₹499</span>
+        </div>
+      </a>
+      <a href="services.html#sv-tv" class="fx-hover-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="relative h-44 overflow-hidden"><img src="https://images.unsplash.com/photo-1766556273549-258012c80951?auto=format&fit=crop&w=900&q=80" alt="Television repair" class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div></div>
+        <div class="flex items-center justify-between p-5">
+          <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white"><i data-lucide="tv" class="h-5 w-5"></i></span>
+            <div><h3 class="font-extrabold text-slate-900 dark:text-white">Television</h3><p class="text-xs text-slate-500 dark:text-slate-400">LED, smart, sound</p></div></div>
+          <span class="text-sm font-bold text-teal-600 dark:text-teal-400">₹349</span>
+        </div>
+      </a>
+      <a href="services.html#sv-microwave" class="fx-hover-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="relative h-44 overflow-hidden"><img src="https://images.unsplash.com/photo-1630699293875-e56c25151c4b?auto=format&fit=crop&w=900&q=80" alt="Microwave oven repair" class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div></div>
+        <div class="flex items-center justify-between p-5">
+          <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white"><i data-lucide="microwave" class="h-5 w-5"></i></span>
+            <div><h3 class="font-extrabold text-slate-900 dark:text-white">Microwave Oven</h3><p class="text-xs text-slate-500 dark:text-slate-400">Magnetron, panels</p></div></div>
+          <span class="text-sm font-bold text-teal-600 dark:text-teal-400">₹299</span>
+        </div>
+      </a>
+      <a href="services.html#sv-geyser" class="fx-hover-card group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="relative h-44 overflow-hidden"><img src="https://images.unsplash.com/photo-1760571327612-8ab776dcd462?auto=format&fit=crop&w=900&q=80" alt="Water heater repair" class="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div></div>
+        <div class="flex items-center justify-between p-5">
+          <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white"><i data-lucide="flame" class="h-5 w-5"></i></span>
+            <div><h3 class="font-extrabold text-slate-900 dark:text-white">Water Heater</h3><p class="text-xs text-slate-500 dark:text-slate-400">Elements, thermostats</p></div></div>
+          <span class="text-sm font-bold text-teal-600 dark:text-teal-400">₹349</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="services.html" class="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-sm font-extrabold text-white shadow-sm transition hover:bg-blue-800">View all services <i data-lucide="arrow-right" class="h-4 w-4 rtl-flip"></i></a>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="bg-white py-16 dark:bg-slate-900 lg:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-teal-700 dark:bg-teal-500/10 dark:text-teal-300"><i data-lucide="route" class="h-3.5 w-3.5"></i>How it works</span>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Repaired in 4 simple steps</h2>
+      </div>
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="text-center">
+          <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-2xl font-extrabold text-blue-700 dark:bg-blue-500/10 dark:text-blue-300">1</span>
+          <h3 class="mt-4 font-extrabold text-slate-900 dark:text-white">Book online</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Pick your appliance and problem in under a minute — no call needed.</p>
+        </div>
+        <div class="text-center">
+          <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-50 text-2xl font-extrabold text-teal-700 dark:bg-teal-500/10 dark:text-teal-300">2</span>
+          <h3 class="mt-4 font-extrabold text-slate-900 dark:text-white">Technician visits</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">An ID-verified expert arrives at the scheduled slot with the right tools.</p>
+        </div>
+        <div class="text-center">
+          <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-2xl font-extrabold text-amber-700 dark:bg-amber-500/10 dark:text-amber-300">3</span>
+          <h3 class="mt-4 font-extrabold text-slate-900 dark:text-white">Transparent quote</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Diagnosis is free when you approve repairs — you approve prices first.</p>
+        </div>
+        <div class="text-center">
+          <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-2xl font-extrabold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">4</span>
+          <h3 class="mt-4 font-extrabold text-slate-900 dark:text-white">Fixed & guaranteed</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Repairs carry a 30-day workmanship warranty. Pay cash or UPI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY FIXORA ============ -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div class="order-2 lg:order-1">
+        <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"><i data-lucide="shield-check" class="h-3.5 w-3.5"></i>Why Fixora</span>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Repairs you can actually trust</h2>
+        <p class="mt-3 text-base leading-relaxed text-slate-600 dark:text-slate-300">We built Fixora to fix what home appliance services get wrong — surprise charges, ghost appointments and hit-or-miss technicians.</p>
+        <div class="mt-8 grid gap-5 sm:grid-cols-2">
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"><i data-lucide="credit-card" class="h-5 w-5"></i></span>
+            <h3 class="mt-3 font-extrabold text-slate-900 dark:text-white">Fix prices, no surprises</h3>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">You approve the quote before any repair begins. Inspection is free when you proceed.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-700 dark:bg-teal-500/10 dark:text-teal-300"><i data-lucide="user-round" class="h-5 w-5"></i></span>
+            <h3 class="mt-3 font-extrabold text-slate-900 dark:text-white">Verified experts</h3>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Background-checked, trained technicians with an average rating of 4.9/5.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300"><i data-lucide="timer" class="h-5 w-5"></i></span>
+            <h3 class="mt-3 font-extrabold text-slate-900 dark:text-white">On-time, same-day</h3>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Morning-to-evening slots with live technician status so you are never left waiting.</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"><i data-lucide="badge-check" class="h-5 w-5"></i></span>
+            <h3 class="mt-3 font-extrabold text-slate-900 dark:text-white">30-day warranty</h3>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Every repair is backed by a workmanship warranty. If it fails, we return free.</p>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="grid gap-4">
+          <div class="overflow-hidden rounded-3xl shadow-lg">
+            <img src="https://images.pexels.com/photos/37492288/pexels-photo-37492288.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Fixora technician working in a kitchen" class="h-56 w-full object-cover" loading="lazy">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="overflow-hidden rounded-3xl shadow-lg">
+              <img src="https://images.unsplash.com/photo-1632923565835-6582b54f2105?auto=format&fit=crop&w=800&q=80" alt="Washing machine and dryer" class="h-40 w-full object-cover" loading="lazy">
+            </div>
+            <div class="overflow-hidden rounded-3xl shadow-lg">
+              <img src="https://images.unsplash.com/photo-1603366591683-a5abc153411f?auto=format&fit=crop&w=800&q=80" alt="Air conditioner unit at home" class="h-40 w-full object-cover" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICE TEASER ============ -->
+  <section class="bg-brand-950 py-16 text-white lg:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-teal-200 ring-1 ring-white/20"><i data-lucide="wallet" class="h-3.5 w-3.5"></i>Sample pricing</span>
+          <h2 class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">Honest starting prices, no fine print</h2>
+          <p class="mt-4 max-w-xl text-base leading-relaxed text-blue-100">Every visit starts with a diagnostic. Approve the repair and the visit fee is waived. See the full guide with what's included and possible extras.</p>
+          <a href="pricing.html" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-brand-900 transition hover:bg-blue-50">View pricing guide <i data-lucide="arrow-right" class="h-4 w-4 rtl-flip"></i></a>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/15">
+            <p class="flex items-center gap-2 text-sm font-bold text-teal-300"><i data-lucide="snowflake" class="h-4 w-4"></i>Refrigerator</p>
+            <p class="mt-2 text-2xl font-extrabold">₹499<span class="text-sm font-semibold text-blue-200">/visit</span></p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/15">
+            <p class="flex items-center gap-2 text-sm font-bold text-teal-300"><i data-lucide="washing-machine" class="h-4 w-4"></i>Washing Machine</p>
+            <p class="mt-2 text-2xl font-extrabold">₹399<span class="text-sm font-semibold text-blue-200">/visit</span></p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/15">
+            <p class="flex items-center gap-2 text-sm font-bold text-teal-300"><i data-lucide="air-vent" class="h-4 w-4"></i>Air Conditioner</p>
+            <p class="mt-2 text-2xl font-extrabold">₹499<span class="text-sm font-semibold text-blue-200">/visit</span></p>
+          </div>
+          <div class="rounded-2xl bg-white/5 p-5 ring-1 ring-white/15">
+            <p class="flex items-center gap-2 text-sm font-bold text-teal-300"><i data-lucide="flame" class="h-4 w-4"></i>Water Heater</p>
+            <p class="mt-2 text-2xl font-extrabold">₹349<span class="text-sm font-semibold text-blue-200">/visit</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-teal-700 dark:bg-teal-500/10 dark:text-teal-300"><i data-lucide="quote" class="h-3.5 w-3.5"></i>Testimonials</span>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Loved by households across Mumbai</h2>
+    </div>
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      <figure class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="flex gap-0.5 text-amber-500"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+        <blockquote class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">"The fridge stopped cooling on a Friday night. Booked at 9am, technician was here by 11, and the compressor issue was fixed by 1pm. Transparent bill, no hidden charges."</blockquote>
+        <figcaption class="mt-4 flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-700 to-teal-600 text-xs font-extrabold text-white">SN</span>
+          <div><p class="text-sm font-extrabold text-slate-900 dark:text-white">Sneha Kapoor</p><p class="text-xs text-slate-500 dark:text-slate-400">Bandra West · Refrigerator</p></div>
+        </figcaption>
+      </figure>
+      <figure class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="flex gap-0.5 text-amber-500"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+        <blockquote class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">"Our washing machine kept throwing error codes. The technician explained the fault, showed the replacement part, and the door-lock fix has held for three months now."</blockquote>
+        <figcaption class="mt-4 flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-700 to-teal-600 text-xs font-extrabold text-white">RM</span>
+          <div><p class="text-sm font-extrabold text-slate-900 dark:text-white">Rohan Mehta</p><p class="text-xs text-slate-500 dark:text-slate-400">Andheri West · Washing Machine</p></div>
+        </figcaption>
+      </figure>
+      <figure class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div class="flex gap-0.5 text-amber-500"><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i></div>
+        <blockquote class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">"Two AC units serviced in one visit at the exact time slot. Filter cleaning plus a gas top-up done neatly. The little notes card left behind was a nice touch."</blockquote>
+        <figcaption class="mt-4 flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-700 to-teal-600 text-xs font-extrabold text-white">FA</span>
+          <div><p class="text-sm font-extrabold text-slate-900 dark:text-white">Farhan Ali</p><p class="text-xs text-slate-500 dark:text-slate-400">Mulund · Air Conditioner</p></div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ APPLIANCE STRIP ============ -->
+  <section class="bg-white py-14 dark:bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-xs font-bold uppercase tracking-widest text-slate-400">Every major brand · Every appliance type</p>
+      <div class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div class="overflow-hidden rounded-2xl"><img src="https://images.pexels.com/photos/8774370/pexels-photo-8774370.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Row of washing machines" class="h-32 w-full object-cover" loading="lazy"></div>
+        <div class="overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1696546761269-a8f9d2b80512?auto=format&fit=crop&w=600&q=80" alt="Laundry room" class="h-32 w-full object-cover" loading="lazy"></div>
+        <div class="overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1723902500132-7de6112d5627?auto=format&fit=crop&w=600&q=80" alt="Modern kitchen with steel appliances" class="h-32 w-full object-cover" loading="lazy"></div>
+        <div class="overflow-hidden rounded-2xl"><img src="https://images.unsplash.com/photo-1721395288351-07aeff0b157f?auto=format&fit=crop&w=600&q=80" alt="Modern dishwasher" class="h-32 w-full object-cover" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"><i data-lucide="help-circle" class="h-3.5 w-3.5"></i>FAQ</span>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Common questions</h2>
+    </div>
+    <div class="mt-10 grid gap-3">
+      <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Is the inspection really free?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Yes. When you approve the repair estimate, the diagnostic visit fee is completely waived. You only start paying when work begins.</p>
+      </details>
+      <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Which areas do you cover?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">We currently serve Mumbai and nearby areas including Andheri, Powai, Goregaon, Bandra and Malad. Enter your address at booking to confirm coverage.</p>
+      </details>
+      <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">What happens if the same problem returns?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Every repair includes a 30-day workmanship warranty. If the same fault reappears within the period, we come back and fix it free of charge.</p>
+      </details>
+      <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Do you use genuine spare parts?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Yes — genuine or equivalent-grade parts sourced for your appliance model, fitted and tested on-site. Old parts are handed back to you.</p>
+      </details>
+      <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+        <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Is this a real booking service?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">No. Fixora is a demonstration website. Bookings, tracking, payments and admin flows are simulated entirely in your browser.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="bg-white py-16 dark:bg-slate-900 lg:py-20">
+    <div class="mx-auto grid max-w-7xl items-start gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-teal-700 dark:bg-teal-500/10 dark:text-teal-300"><i data-lucide="phone-call" class="h-3.5 w-3.5"></i>Get in touch</span>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-4xl">Talk to a human</h2>
+        <p class="mt-3 max-w-lg text-base leading-relaxed text-slate-600 dark:text-slate-300">Questions about a repair, a brand or warranty? Call, write, or drop us a message and we will get back to you within a few hours.</p>
+        <ul class="mt-8 space-y-4 text-sm text-slate-700 dark:text-slate-200">
+          <li class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"><i data-lucide="phone" class="h-4 w-4"></i></span>+91 1800 123 4567 <span class="text-slate-400">(toll-free)</span></li>
+          <li class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-700 dark:bg-teal-500/10 dark:text-teal-300"><i data-lucide="mail" class="h-4 w-4"></i></span>support@fixora.in</li>
+          <li class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300"><i data-lucide="clock" class="h-4 w-4"></i></span>7:00 AM – 8:00 PM, all days</li>
+        </ul>
+      </div>
+      <form id="fxContactForm" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-950" novalidate>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Name *</label><input id="ctName" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-blue-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="Your name"></div>
+          <div><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Phone *</label><input id="ctPhone" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-blue-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="+91 XXXXX XXXXX"></div>
+          <div class="sm:col-span-2"><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Message *</label><textarea id="ctMsg" rows="4" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-blue-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="How can we help?"></textarea></div>
+        </div>
+        <button type="submit" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-blue-800"><i data-lucide="send" class="h-4 w-4 rtl-flip"></i>Send message</button>
+        <p class="mt-3 text-center text-xs text-slate-400">Demo form — nothing is actually sent anywhere.</p>
+      </form>
+    </div>
+  </section>
+
+  <div id="fx-footer"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/bookings.js"></script>
+  <script src="js/services.js"></script>
+  <script>
+    (function () {
+      function boot() {
+        var quick = document.getElementById('fxQuickBook');
+        if (quick) quick.addEventListener('submit', function (e) {
+          e.preventDefault();
+          Fixora.bookService(document.getElementById('qbAppliance').value);
+        });
+        var contact = document.getElementById('fxContactForm');
+        if (contact) contact.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var name = document.getElementById('ctName').value.trim();
+          var phone = document.getElementById('ctPhone').value.trim();
+          var msg = document.getElementById('ctMsg').value.trim();
+          if (!name || !phone || !msg) { Fixora.toast('Please fill all the fields before sending.', 'error'); return; }
+          Fixora.toast('Thanks, ' + name + '! Your message was captured (demo).', 'success');
+          contact.reset();
+        });
+      }
+      if (Fixora.bootReady) boot();
+      else document.addEventListener('fx:ready', boot, { once: true });
+    })();
+  </script>
+</body>
+</html>

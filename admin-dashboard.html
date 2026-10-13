@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Fixora</title>
+  <meta name="description" content="Fixora admin panel — manage bookings, customers, technicians, services, pricing, service areas and enquiries.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231d4ed8'/%3E%3Cstop offset='1' stop-color='%230d9488'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
+  <script>!function(){try{var t=JSON.parse(localStorage.getItem('fixora_theme')||'null');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}}();</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eef6ff',100:'#d9eaff',200:'#bcd9ff',300:'#8ec0ff',400:'#599dff',500:'#3378f6',600:'#1d5be0',700:'#1847b6',800:'#183d8f',900:'#0f2a63',950:'#0a1c42' }
+          },
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body data-page="adminDashboard" class="bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-white">
+  <div class="min-h-screen lg:flex">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside id="fxSidebar" class="fx-sb border-e border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+      <div class="sticky top-0 z-10 flex h-16 items-center justify-between border-b border-slate-200 bg-white/95 px-5 backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">
+        <a href="index.html" class="flex items-center gap-2.5">
+          <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white"><i data-lucide="wrench" class="h-5 w-5"></i></span>
+          <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Fixora<span class="text-teal-600 dark:text-teal-400">.</span></span>
+        </a>
+        <button id="fxSidebarClose" class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 lg:hidden" aria-label="Close sidebar"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+
+      <nav class="p-3" aria-label="Admin dashboard">
+        <p class="px-3 pb-1 pt-3 text-xs font-bold uppercase tracking-wider text-slate-400">Operations</p>
+        <div class="grid gap-1">
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="overview"><i data-lucide="layout-grid" class="h-4 w-4"></i>Overview</button>
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="bookings"><i data-lucide="calendar-check" class="h-4 w-4"></i>Bookings</button>
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="customers"><i data-lucide="users" class="h-4 w-4"></i>Customers</button>
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="technicians"><i data-lucide="wrench" class="h-4 w-4"></i>Technicians</button>
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="services"><i data-lucide="layers" class="h-4 w-4"></i>Services</button>
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="pricing"><i data-lucide="circle-dollar-sign" class="h-4 w-4"></i>Pricing</button>
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="areas"><i data-lucide="map-pin" class="h-4 w-4"></i>Service Areas</button>
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="enquiries"><i data-lucide="inbox" class="h-4 w-4"></i>Enquiries</button>
+        </div>
+        <p class="px-3 pb-1 pt-4 text-xs font-bold uppercase tracking-wider text-slate-400">System</p>
+        <div class="grid gap-1">
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="settings"><i data-lucide="settings" class="h-4 w-4"></i>Settings</button>
+          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-rose-600 transition hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-500/10" data-section="logout"><i data-lucide="log-out" class="h-4 w-4 rtl-flip"></i>Logout</button>
+        </div>
+      </nav>
+
+      <div class="mt-auto p-4">
+        <div class="rounded-2xl bg-gradient-to-br from-slate-800 to-slate-950 p-4 text-white dark:from-slate-700 dark:to-slate-900">
+          <p class="text-sm font-extrabold"><i data-lucide="shield-check" class="me-1 inline h-4 w-4 text-teal-400"></i>Demo admin panel</p>
+          <p class="mt-1 text-xs leading-relaxed text-slate-300">All data lives in this browser. Use Settings → Reset data to restore the demo.</p>
+        </div>
+      </div>
+    </aside>
+    <div id="fxSidebarBackdrop" class="fx-sb-backdrop"></div>
+
+    <!-- ============ MAIN COLUMN ============ -->
+    <div class="flex min-w-0 flex-1 flex-col">
+      <header class="sticky top-0 z-40 flex h-16 items-center gap-3 border-b border-slate-200 bg-white/95 px-4 backdrop-blur dark:border-slate-800 dark:bg-slate-900/95 sm:px-6 lg:px-8">
+        <button id="fxMenuBtn2" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden" aria-label="Open sidebar"><i data-lucide="menu" class="h-6 w-6"></i></button>
+        <h1 id="fxPageTitle" class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">Admin</h1>
+        <div class="ms-auto flex items-center gap-1.5">
+          <button id="fxDirBtn2" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-label="Toggle direction"><i data-lucide="arrow-right-left" class="h-5 w-5"></i></button>
+          <button id="fxThemeBtn2" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-label="Toggle theme"><i data-lucide="moon" class="h-5 w-5"></i></button>
+        </div>
+      </header>
+
+      <main id="fxMain" class="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8"></main>
+    </div>
+  </div>
+
+  <!-- ============ BOOKING MANAGE MODAL ============ -->
+  <div id="fxAdmBookingModal" data-modal-backdrop class="fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-slate-900/60 p-4">
+    <div data-modal-panel class="fx-modal-in my-8 w-full max-w-lg rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+        <h3 class="text-base font-extrabold text-slate-900 dark:text-white">Manage booking</h3>
+        <button data-close-modal="fxAdmBookingModal" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <div id="admBkBody" class="px-6 py-5"></div>
+      <div class="flex justify-end border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+        <button data-close-modal="fxAdmBookingModal" class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CUSTOMER VIEW MODAL ============ -->
+  <div id="fxAdmCustModal" data-modal-backdrop class="fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-slate-900/60 p-4">
+    <div data-modal-panel class="fx-modal-in my-8 w-full max-w-xl rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+        <h3 class="text-base font-extrabold text-slate-900 dark:text-white">Customer details</h3>
+        <button data-close-modal="fxAdmCustModal" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <div id="fxAdmCustBody" class="px-6 py-5"></div>
+      <div class="flex justify-end border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+        <button data-close-modal="fxAdmCustModal" class="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TECHNICIAN MODAL ============ -->
+  <div id="fxTechModal" data-modal-backdrop class="fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-slate-900/60 p-4">
+    <div data-modal-panel class="fx-modal-in my-8 w-full max-w-lg rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+        <h3 id="admTechTitle" class="text-base font-extrabold text-slate-900 dark:text-white">Add technician</h3>
+        <button data-close-modal="fxTechModal" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <div id="admTechForm" class="px-6 py-5"></div>
+      <div class="flex justify-end border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+        <button data-close-modal="fxTechModal" class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">Cancel</button>
+        <button id="admTechSave" class="ms-3 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">Save technician</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SERVICE MODAL ============ -->
+  <div id="fxSvcModal" data-modal-backdrop class="fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-slate-900/60 p-4">
+    <div data-modal-panel class="fx-modal-in my-8 w-full max-w-lg rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+        <h3 id="admSvcTitle" class="text-base font-extrabold text-slate-900 dark:text-white">Add service</h3>
+        <button data-close-modal="fxSvcModal" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <div id="admSvcForm" class="px-6 py-5"></div>
+      <div class="flex justify-end border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+        <button data-close-modal="fxSvcModal" class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">Cancel</button>
+        <button id="admSvcSave" class="ms-3 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">Save service</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PRICING MODAL ============ -->
+  <div id="fxPcModal" data-modal-backdrop class="fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-slate-900/60 p-4">
+    <div data-modal-panel class="fx-modal-in my-8 w-full max-w-lg rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+        <h3 id="admPcTitle" class="text-base font-extrabold text-slate-900 dark:text-white">Add price row</h3>
+        <button data-close-modal="fxPcModal" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <div id="admPcForm" class="px-6 py-5"></div>
+      <div class="flex justify-end border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+        <button data-close-modal="fxPcModal" class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">Cancel</button>
+        <button id="admPcSave" class="ms-3 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">Save price</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ AREA MODAL ============ -->
+  <div id="fxAreaModal" data-modal-backdrop class="fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-slate-900/60 p-4">
+    <div data-modal-panel class="fx-modal-in my-8 w-full max-w-md rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+        <h3 id="admAreaTitle" class="text-base font-extrabold text-slate-900 dark:text-white">Add area</h3>
+        <button data-close-modal="fxAreaModal" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <div id="admAreaForm" class="px-6 py-5"></div>
+      <div class="flex justify-end border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+        <button data-close-modal="fxAreaModal" class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">Cancel</button>
+        <button id="admAreaSave" class="ms-3 rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">Save area</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ENQUIRY VIEW MODAL ============ -->
+  <div id="fxEnqModal" data-modal-backdrop class="fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-slate-900/60 p-4">
+    <div data-modal-panel class="fx-modal-in my-8 w-full max-w-lg rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+        <h3 class="text-base font-extrabold text-slate-900 dark:text-white">Enquiry details</h3>
+        <button data-close-modal="fxEnqModal" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+      </div>
+      <div id="fxEnqBody" class="px-6 py-5"></div>
+      <div class="flex justify-end border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+        <button data-close-modal="fxEnqModal" class="rounded-lg bg-blue-700 px-4 py-2.5 text-sm font-bold text-white hover:bg-blue-800">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/bookings.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+  <script>
+    (function () {
+      function boot() {
+        var th = document.getElementById('fxThemeBtn2');
+        if (th) th.addEventListener('click', function () {
+          var dark = document.documentElement.classList.contains('dark');
+          var icon = th.querySelector('[data-lucide]');
+          if (icon) icon.setAttribute('data-lucide', dark ? 'sun' : 'moon');
+          if (window.lucide) lucide.createIcons();
+        });
+        var dh = document.getElementById('fxDirBtn2');
+        if (dh) dh.addEventListener('click', function () {
+          var rtl = document.documentElement.getAttribute('dir') === 'rtl';
+          var icon = dh.querySelector('[data-lucide]');
+          if (icon) icon.setAttribute('data-lucide', rtl ? 'arrow-left' : 'arrow-right');
+          if (window.lucide) lucide.createIcons();
+        });
+      }
+      if (Fixora.bootReady) boot();
+      else document.addEventListener('fx:ready', boot, { once: true });
+    })();
+  </script>
+</body>
+</html>

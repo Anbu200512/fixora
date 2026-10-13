@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Fixora Appliance Repair</title>
+  <meta name="description" content="Browse Fixora's appliance repair services — refrigerators, washing machines, ACs, TVs, microwaves, dishwashers, water heaters and kitchen appliances with transparent starting prices.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231d4ed8'/%3E%3Cstop offset='1' stop-color='%230d9488'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
+  <script>!function(){try{var t=JSON.parse(localStorage.getItem('fixora_theme')||'null');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}}();</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eef6ff',100:'#d9eaff',200:'#bcd9ff',300:'#8ec0ff',400:'#599dff',500:'#3378f6',600:'#1d5be0',700:'#1847b6',800:'#183d8f',900:'#0f2a63',950:'#0a1c42' }
+          },
+          fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body data-page="services" class="bg-slate-50 font-sans text-slate-900 antialiased dark:bg-slate-950 dark:text-white">
+  <div id="fx-navbar"></div>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="bg-gradient-to-br from-brand-950 via-brand-900 to-teal-800 py-16 text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-teal-200 ring-1 ring-white/20"><i data-lucide="wrench" class="h-3.5 w-3.5"></i>Our services</span>
+      <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Repair services for every appliance</h1>
+      <p class="mt-3 max-w-2xl text-base leading-relaxed text-blue-100">Every service includes a free on-site diagnosis when you approve the repair, genuine parts, and a 30-day workmanship warranty. Pick a category below or ask us a question.</p>
+      <div class="mt-6 flex flex-wrap gap-2 text-sm text-blue-100">
+        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="badge-check" class="me-1 inline h-3.5 w-3.5"></i>Verified technicians</span>
+        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="shield-check" class="me-1 inline h-3.5 w-3.5"></i>30-day warranty</span>
+        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="timer" class="me-1 inline h-3.5 w-3.5"></i>Same-day slots</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FILTER TABS ============ -->
+  <section class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+    <div id="fxServiceTabs" class="flex flex-wrap items-center gap-2"></div>
+    <p class="mt-3 text-xs text-slate-400">Prices shown are starting estimates. Final charges depend on inspection, model and parts.</p>
+  </section>
+
+  <!-- ============ SERVICE CARDS ============ -->
+  <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <div id="fxServicesList" class="grid gap-8"></div>
+  </section>
+
+  <!-- ============ HELP STRIP ============ -->
+  <section class="border-t border-slate-200 bg-white py-14 dark:border-slate-800 dark:bg-slate-900">
+    <div class="mx-auto grid max-w-7xl gap-8 px-4 sm:grid-cols-3 sm:px-6 lg:px-8">
+      <div class="flex items-start gap-4">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"><i data-lucide="search" class="h-5 w-5"></i></span>
+        <div><h3 class="font-extrabold text-slate-900 dark:text-white">Diagnose first</h3><p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Technician inspects on-site and explains the fault before any work or charge.</p></div>
+      </div>
+      <div class="flex items-start gap-4">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-700 dark:bg-teal-500/10 dark:text-teal-300"><i data-lucide="receipt" class="h-5 w-5"></i></span>
+        <div><h3 class="font-extrabold text-slate-900 dark:text-white">Quote before repair</h3><p class="mt-1 text-sm text-slate-600 dark:text-slate-300">You approve the estimate. If you repair with us, the diagnostic visit is free.</p></div>
+      </div>
+      <div class="flex items-start gap-4">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300"><i data-lucide="calendar-check" class="h-5 w-5"></i></span>
+        <div><h3 class="font-extrabold text-slate-900 dark:text-white">Book in one tap</h3><p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Pick the appliance, pick a slot, and track your technician from the dashboard.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENQUIRY MODAL ============ -->
+  <div id="fxEnquiryModal" data-modal-backdrop class="fixed inset-0 z-[90] hidden items-center justify-center overflow-y-auto bg-slate-900/60 p-4">
+    <div data-modal-panel class="fx-modal-in my-8 w-full max-w-2xl rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <form id="fxEnquiryForm" novalidate>
+        <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+          <div class="flex items-center gap-2.5">
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"><i data-lucide="message-square" class="h-4 w-4"></i></span>
+            <div><h3 class="text-base font-extrabold text-slate-900 dark:text-white">Ask a question</h3><p class="text-xs text-slate-500 dark:text-slate-400">Share a few details — we'll get back within a few hours (demo).</p></div>
+          </div>
+          <button type="button" data-close-modal="fxEnquiryModal" class="rounded-lg p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-600 dark:hover:bg-slate-800" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+        </div>
+        <div id="fxEnquiryFields" class="px-6 py-5"></div>
+        <div class="flex flex-wrap items-center justify-end gap-3 border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <button type="button" data-close-modal="fxEnquiryModal" class="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">Cancel</button>
+          <button type="submit" class="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-blue-800"><i data-lucide="send" class="h-4 w-4 rtl-flip"></i>Submit enquiry</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="fx-footer"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/bookings.js"></script>
+  <script src="js/services.js"></script>
+</body>
+</html>

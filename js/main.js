@@ -275,10 +275,14 @@
   function applyTheme(t) {
     if (t === 'dark') document.documentElement.classList.add('dark');
     else document.documentElement.classList.remove('dark');
-    var icon = document.getElementById('fxThemeIcon');
-    if (icon) icon.setAttribute('data-lucide', t === 'dark' ? 'sun' : 'moon');
-    var btn = document.getElementById('fxThemeBtn');
-    if (btn) btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    var label = t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    document.querySelectorAll('[data-fx-theme-icon]').forEach(function (icon) {
+      icon.setAttribute('data-lucide', t === 'dark' ? 'sun' : 'moon');
+    });
+    document.querySelectorAll('[data-fx-theme-btn]').forEach(function (btn) {
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    });
     if (window.lucide) lucide.createIcons();
   }
   Fixora.initTheme = function () {
@@ -302,10 +306,14 @@
   function applyDirection(d) {
     document.documentElement.setAttribute('dir', d);
     document.documentElement.setAttribute('lang', d === 'rtl' ? 'ur' : 'en');
-    var icon = document.getElementById('fxDirIcon');
-    if (icon) icon.setAttribute('data-lucide', d === 'rtl' ? 'arrow-right' : 'arrow-left');
-    var btn = document.getElementById('fxDirBtn');
-    if (btn) btn.setAttribute('aria-label', d === 'rtl' ? 'Switch to LTR' : 'Switch to RTL');
+    var label = d === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
+    document.querySelectorAll('[data-fx-dir-icon]').forEach(function (icon) {
+      icon.setAttribute('data-lucide', d === 'rtl' ? 'arrow-right' : 'arrow-left');
+    });
+    document.querySelectorAll('[data-fx-dir-btn]').forEach(function (btn) {
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    });
     if (window.lucide) lucide.createIcons();
   }
   Fixora.initDirection = function () {
@@ -469,7 +477,6 @@
       '<header class="border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">' +
       '  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 px-4 sm:px-6 lg:px-8">' +
       '    <div class="flex items-center gap-3">' +
-      '      <button id="fxMenuBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden" aria-label="Open menu"><i data-lucide="menu" class="h-6 w-6"></i></button>' +
       '      <a href="index.html" class="flex items-center gap-2.5">' +
       '        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white shadow-sm"><i data-lucide="wrench" class="h-5 w-5"></i></span>' +
       '        <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Fixora<span class="text-teal-600 dark:text-teal-400">.</span></span>' +
@@ -487,23 +494,30 @@
       '        <div class="fx-nav-panel hidden absolute end-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl dark:border-slate-700 dark:bg-slate-900">' + dashDropdown + '</div>' +
       '      </div></nav>' +
       '    <div class="flex items-center gap-1.5">' +
-      '      <button id="fxDirBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" title="RTL/LTR" aria-label="Toggle direction"><i id="fxDirIcon" data-lucide="arrow-left" class="h-5 w-5"></i></button>' +
-      '      <button id="fxThemeBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" title="Toggle theme" aria-label="Toggle theme"><i id="fxThemeIcon" data-lucide="sun" class="h-5 w-5"></i></button>' +
-      '      <span class="mx-1 hidden h-6 w-px bg-slate-200 dark:bg-slate-700 sm:block"></span>' +
-      '      <div class="hidden sm:flex items-center gap-0.5">' + authArea + '</div>' +
+      '      <button data-fx-dir-btn class="hidden lg:inline-flex rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" title="RTL/LTR" aria-label="Toggle direction"><i data-fx-dir-icon data-lucide="arrow-left" class="h-5 w-5"></i></button>' +
+      '      <button data-fx-theme-btn class="hidden lg:inline-flex rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" title="Toggle theme" aria-label="Toggle theme"><i data-fx-theme-icon data-lucide="sun" class="h-5 w-5"></i></button>' +
+      '      <span class="mx-1 hidden h-6 w-px bg-slate-200 dark:bg-slate-700 lg:block"></span>' +
+      '      <div class="hidden lg:flex items-center gap-0.5">' + authArea + '</div>' +
+      '      <span class="mx-1 hidden h-6 w-px bg-slate-200 dark:bg-slate-700 lg:block"></span>' +
+      '      <button id="fxMenuBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden" aria-label="Open menu"><i data-lucide="menu" class="h-6 w-6"></i></button>' +
       '    </div>' +
       '  </div>' +
       '  <div id="fxMobileMenu" class="hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:hidden">' +
       '    <div class="px-4 py-3 space-y-1">' +
-      '      <div class="flex items-center gap-2 rounded-lg bg-slate-100 dark:bg-slate-900 sm:hidden" style="padding:6px 10px;">' + authArea.replace('class="rounded-lg px-3 py-2', 'class="rounded-lg px-2 py-1') + '</div>' +
       '      <p class="px-1 pt-2 text-xs font-bold uppercase tracking-wider text-slate-400">Home</p>' +
-      homeDropdown.replace(/rounded-lg px-3/g, 'rounded-lg px-3 py-2.5') +
+      homeDropdown.replace(/rounded-lg px-3/g, 'rounded-lg px-3 py-2.5').replace(/\s*<i data-lucide="[^"]*" class="h-4 w-4"><\/i>/g, '') +
       '      <p class="px-1 pt-2 text-xs font-bold uppercase tracking-wider text-slate-400">Explore</p>' +
       navItem(active.services, 'services.html', 'Services').replace('px-3', 'px-3 py-2.5') +
       navItem(active.pricing, 'pricing.html', 'Pricing').replace('px-3', 'px-3 py-2.5') +
       navItem(false, 'index.html#contact', 'Contact').replace('px-3', 'px-3 py-2.5') +
       '      <p class="px-1 pt-2 text-xs font-bold uppercase tracking-wider text-slate-400">Dashboards</p>' +
-      dashDropdown.replace(/py-2/g, 'py-2.5') +
+      dashDropdown.replace(/py-2/g, 'py-2.5').replace(/\s*<i data-lucide="[^"]*" class="h-4 w-4"><\/i>/g, '') +
+      '      <p class="px-1 pt-2 text-xs font-bold uppercase tracking-wider text-slate-400">Preferences</p>' +
+      '      <div class="flex items-center gap-2">' +
+      '        <button data-fx-theme-btn class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800" aria-label="Toggle theme"><i data-fx-theme-icon data-lucide="sun" class="h-4 w-4"></i></button>' +
+      '        <button data-fx-dir-btn class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800" aria-label="Toggle direction"><i data-fx-dir-icon data-lucide="arrow-left" class="h-4 w-4"></i></button>' +
+      '      </div>' +
+      '      <div class="flex items-center gap-2 rounded-lg bg-slate-100 dark:bg-slate-900" style="padding:6px 10px;">' + authArea.replace('class="rounded-lg px-3 py-2', 'class="rounded-lg px-2 py-1') + '</div>' +
       '    </div></div>' +
       '</header>';
     Fixora.refreshNavAuth();
@@ -512,15 +526,15 @@
   };
 
   Fixora.refreshNavAuth = function () {
-    var btn = document.getElementById('fxLogoutBtn');
-    if (btn && !btn.dataset.bound) {
+    document.querySelectorAll('#fxLogoutBtn').forEach(function (btn) {
+      if (btn.dataset.bound) return;
       btn.dataset.bound = '1';
       btn.addEventListener('click', function () {
         Fixora.setCurrentUser(null);
         Fixora.toast('You have been logged out.', 'info');
         setTimeout(function () { window.location.href = 'index.html'; }, 600);
       });
-    }
+    });
   };
 
   function bindNav() {
@@ -534,10 +548,12 @@
         if (window.lucide) lucide.createIcons();
       });
     }
-    var dirBtn = document.getElementById('fxDirBtn');
-    if (dirBtn) dirBtn.addEventListener('click', function () { Fixora.toggleDirection(); Fixora.toast('Direction set to ' + (document.documentElement.getAttribute('dir') === 'rtl' ? 'RTL' : 'LTR'), 'info'); });
-    var themeBtn = document.getElementById('fxThemeBtn');
-    if (themeBtn) themeBtn.addEventListener('click', function () { Fixora.toggleTheme(); });
+    document.querySelectorAll('[data-fx-dir-btn]').forEach(function (btn) {
+      btn.addEventListener('click', function () { Fixora.toggleDirection(); Fixora.toast('Direction set to ' + (document.documentElement.getAttribute('dir') === 'rtl' ? 'RTL' : 'LTR'), 'info'); });
+    });
+    document.querySelectorAll('[data-fx-theme-btn]').forEach(function (btn) {
+      btn.addEventListener('click', function () { Fixora.toggleTheme(); });
+    });
 
     document.querySelectorAll('.fx-nav-trigger').forEach(function (trigger) {
       trigger.addEventListener('click', function (e) {

@@ -42,7 +42,7 @@
     'data:image/svg+xml;utf8,' + encodeURIComponent(
       '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">' +
       '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
-      '<stop offset="0" stop-color="#1d5be0"/><stop offset="1" stop-color="#0d9488"/></linearGradient></defs>' +
+      '<stop offset="0" stop-color="#883923"/><stop offset="1" stop-color="#c45c3a"/></linearGradient></defs>' +
       '<rect width="800" height="500" fill="url(#g)"/>' +
       '<g fill="#ffffff" opacity="0.9"><circle cx="400" cy="240" r="46" fill="none" stroke="#fff" stroke-width="10"/>' +
       '<rect x="390" y="272" width="20" height="70" rx="6"/><path d="M398 320 l-34 70" stroke="#fff" stroke-width="12" stroke-linecap="round"/>' +
@@ -203,6 +203,20 @@
           image: Fixora.IMG.stoveSteel }
       ]);
     }
+    var seededServices = Fixora.get('fixora_services', []);
+    if (!Fixora.get('fixora_migration_chimney_service', false)) {
+      if (!seededServices.some(function (service) { return service.id === 'sv-chimney'; })) {
+        seededServices.push({
+          id: 'sv-chimney', name: 'Chimney & Hob Repair', icon: 'fan', price: 349, active: true, image: Fixora.IMG.stoveOven,
+          problems: ['Chimney suction is weak', 'Filter needs deep cleaning', 'Hob burner will not ignite', 'Unusual noise or vibration'],
+          desc: 'At-home help for kitchen chimneys and gas hobs, including filter cleaning, suction issues, ignition faults and routine safety checks.',
+          process: ['Choose the appliance and describe the issue', 'Technician checks filters, motor or ignition', 'Review the estimate before work begins', 'Repair and test the appliance at home'],
+          diag: 'We inspect the chimney filters, fan and controls, or check hob ignition and burner components based on the reported issue.'
+        });
+        Fixora.set('fixora_services', seededServices);
+      }
+      Fixora.set('fixora_migration_chimney_service', true);
+    }
     if (!Fixora.get('fixora_pricing')) {
       Fixora.set('fixora_pricing', [
         { id: 'p-diag', service: 'Inspection & Diagnostic Visit', startingPrice: 249, included: ['Technician visit', 'Fault finding & diagnosis', 'Written estimate of repair cost'], additional: ['Fee waived if you approve repairs', 'Travel charge for remote locations'] },
@@ -308,7 +322,7 @@
     document.documentElement.setAttribute('lang', d === 'rtl' ? 'ur' : 'en');
     var label = d === 'rtl' ? 'Switch to LTR' : 'Switch to RTL';
     document.querySelectorAll('[data-fx-dir-icon]').forEach(function (icon) {
-      icon.setAttribute('data-lucide', d === 'rtl' ? 'arrow-right' : 'arrow-left');
+      icon.setAttribute('data-lucide', 'arrow-left-right');
     });
     document.querySelectorAll('[data-fx-dir-btn]').forEach(function (btn) {
       btn.setAttribute('aria-label', label);
@@ -451,10 +465,12 @@
     var holder = document.getElementById('fx-navbar');
     if (!holder) return;
     var page = document.body.getAttribute('data-page') || '';
-    var active = { home: false, services: false, pricing: false };
+    var active = { home: false, services: false, pricing: false, about: false, contact: false };
     if (page === 'index' || page === 'home2') active.home = true;
     if (page === 'services') active.services = true;
     if (page === 'pricing') active.pricing = true;
+    if (page === 'about') active.about = true;
+    if (page === 'contact') active.contact = true;
 
     var homeDropdown = [
       navItem(page === 'index', 'index.html', 'Home 1', '', 'home'),
@@ -465,13 +481,14 @@
       '<a href="dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-400"><i data-lucide="user-round" class="h-4 w-4"></i>Customer Dashboard</a>' +
       '<a href="admin-dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-blue-700 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-blue-400"><i data-lucide="shield" class="h-4 w-4"></i>Admin Dashboard</a>';
 
-    var user = Fixora.currentUser();
-    var authArea = user
-      ? '<a href="' + (user.role === 'admin' ? 'admin-dashboard.html' : 'dashboard.html') + '" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 dark:text-slate-200 dark:hover:text-blue-400">' +
-        '<span class="flex h-8 w-8 items-center justify-center rounded-full bg-blue-700 text-xs font-bold text-white">' + Fixora.esc(user.name ? user.name.split(' ').map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase() : 'U') + '</span>' +
-        '<span class="hidden lg:inline max-w-[110px] truncate">' + Fixora.esc(user.name || user.email) + '</span></a>' +
-        '<button id="fxLogoutBtn" class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 hover:text-rose-600 dark:text-slate-400 dark:hover:bg-slate-800" title="Logout" aria-label="Logout"><i data-lucide="log-out" class="h-5 w-5 rtl-flip"></i></button>'
-      : '<a href="login.html" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 dark:text-slate-200 dark:hover:text-blue-400">Login</a>';
+    var homeMobile = homeDropdown
+      .replace(/rounded-lg px-3/g, 'rounded-lg px-3 py-2.5')
+      .replace(/\s*<i data-lucide="[^"]*" class="h-4 w-4"><\/i>/g, '');
+    var dashMobile = dashDropdown
+      .replace(/py-2/g, 'py-2.5')
+      .replace(/\s*<i data-lucide="[^"]*" class="h-4 w-4"><\/i>/g, '');
+
+    var authArea = '<a href="login.html" class="rounded-xl bg-brand-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700">Login</a>';
 
     holder.innerHTML =
       '<header class="border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">' +
@@ -486,9 +503,10 @@
       '        <button class="fx-nav-trigger flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold ' + (active.home ? 'text-blue-700 dark:text-blue-400' : 'text-slate-700 hover:text-blue-700 dark:text-slate-200 dark:hover:text-blue-400') + '" aria-haspopup="true" aria-expanded="false">Home<i data-lucide="chevron-down" class="h-4 w-4 rtl-flip"></i></button>' +
       '        <div class="fx-nav-panel hidden absolute start-0 top-full mt-2 w-44 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl dark:border-slate-700 dark:bg-slate-900">' + homeDropdown + '</div>' +
       '      </div>' +
+      navItem(active.about, 'about.html', 'About') +
       navItem(active.services, 'services.html', 'Services') +
       navItem(active.pricing, 'pricing.html', 'Pricing') +
-      navItem(false, 'index.html#contact', 'Contact') +
+      navItem(active.contact, 'contact.html', 'Contact') +
       '      <div class="fx-nav-drop relative">' +
       '        <button class="fx-nav-trigger flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 hover:text-blue-700 dark:text-slate-200 dark:hover:text-blue-400" aria-haspopup="true" aria-expanded="false">Dashboard<i data-lucide="chevron-down" class="h-4 w-4 rtl-flip"></i></button>' +
       '        <div class="fx-nav-panel hidden absolute end-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white p-1.5 shadow-xl dark:border-slate-700 dark:bg-slate-900">' + dashDropdown + '</div>' +
@@ -504,20 +522,23 @@
       '  </div>' +
       '  <div id="fxMobileMenu" class="hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:hidden">' +
       '    <div class="px-4 py-3 space-y-1">' +
-      '      <p class="px-1 pt-2 text-xs font-bold uppercase tracking-wider text-slate-400">Home</p>' +
-      homeDropdown.replace(/rounded-lg px-3/g, 'rounded-lg px-3 py-2.5').replace(/\s*<i data-lucide="[^"]*" class="h-4 w-4"><\/i>/g, '') +
-      '      <p class="px-1 pt-2 text-xs font-bold uppercase tracking-wider text-slate-400">Explore</p>' +
+      '      <div class="fx-m-drop">' +
+      '        <button type="button" class="fx-m-trigger flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="false">Home<i data-lucide="chevron-down" class="fx-m-chevron h-4 w-4 rtl-flip transition-transform"></i></button>' +
+      '        <div class="fx-m-panel hidden ps-3">' + homeMobile + '</div>' +
+      '      </div>' +
+      navItem(active.about, 'about.html', 'About').replace('px-3', 'px-3 py-2.5') +
       navItem(active.services, 'services.html', 'Services').replace('px-3', 'px-3 py-2.5') +
       navItem(active.pricing, 'pricing.html', 'Pricing').replace('px-3', 'px-3 py-2.5') +
-      navItem(false, 'index.html#contact', 'Contact').replace('px-3', 'px-3 py-2.5') +
-      '      <p class="px-1 pt-2 text-xs font-bold uppercase tracking-wider text-slate-400">Dashboards</p>' +
-      dashDropdown.replace(/py-2/g, 'py-2.5').replace(/\s*<i data-lucide="[^"]*" class="h-4 w-4"><\/i>/g, '') +
-      '      <p class="px-1 pt-2 text-xs font-bold uppercase tracking-wider text-slate-400">Preferences</p>' +
-      '      <div class="flex items-center gap-2">' +
+      navItem(active.contact, 'contact.html', 'Contact').replace('px-3', 'px-3 py-2.5') +
+      '      <div class="fx-m-drop">' +
+      '        <button type="button" class="fx-m-trigger flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="false">Dashboard<i data-lucide="chevron-down" class="fx-m-chevron h-4 w-4 rtl-flip transition-transform"></i></button>' +
+      '        <div class="fx-m-panel hidden ps-3">' + dashMobile + '</div>' +
+      '      </div>' +
+      '      <div class="flex items-center justify-center gap-2">' +
       '        <button data-fx-theme-btn class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800" aria-label="Toggle theme"><i data-fx-theme-icon data-lucide="sun" class="h-4 w-4"></i></button>' +
       '        <button data-fx-dir-btn class="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800" aria-label="Toggle direction"><i data-fx-dir-icon data-lucide="arrow-left" class="h-4 w-4"></i></button>' +
       '      </div>' +
-      '      <div class="flex items-center gap-2 rounded-lg bg-slate-100 dark:bg-slate-900" style="padding:6px 10px;">' + authArea.replace('class="rounded-lg px-3 py-2', 'class="rounded-lg px-2 py-1') + '</div>' +
+      '      <a href="login.html" class="flex w-full items-center justify-center rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700">Login</a>' +
       '    </div></div>' +
       '</header>';
     Fixora.refreshNavAuth();
@@ -553,6 +574,18 @@
     });
     document.querySelectorAll('[data-fx-theme-btn]').forEach(function (btn) {
       btn.addEventListener('click', function () { Fixora.toggleTheme(); });
+    });
+
+    document.querySelectorAll('.fx-m-trigger').forEach(function (trigger) {
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var panel = trigger.nextElementSibling;
+        var open = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', open ? 'false' : 'true');
+        if (panel) panel.classList.toggle('hidden', open);
+        var chev = trigger.querySelector('.fx-m-chevron');
+        if (chev) chev.style.transform = open ? '' : 'rotate(180deg)';
+      });
     });
 
     document.querySelectorAll('.fx-nav-trigger').forEach(function (trigger) {
@@ -592,35 +625,34 @@
     if (!holder) return;
     var services = Fixora.get('fixora_services', []);
     var svcLinks = services.slice(0, 4).map(function (s) {
-      return '<li><a class="text-sm text-slate-400 hover:text-teal-400 transition" href="services.html#sv-' + s.id.replace('sv-', '') + '">' + Fixora.esc(s.name) + '</a></li>';
+      return '<li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="services.html#sv-' + s.id.replace('sv-', '') + '">' + Fixora.esc(s.name) + '</a></li>';
     }).join('');
     var areas = Fixora.get('fixora_areas', []);
     var areaText = areas.slice(0, 5).map(function (a) { return a.name + ', ' + a.city; }).join(' · ');
     holder.innerHTML =
-      '<footer class="border-t border-slate-800 bg-slate-950 text-slate-300">' +
-      '  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">' +
-      '    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">' +
+      '<footer class="border-t border-brand-200 bg-[#f2e9dc] text-stone-700 dark:border-stone-800 dark:bg-stone-950 dark:text-stone-300">' +
+      '  <div class="mx-auto max-w-7xl px-4 pb-7 pt-10 sm:px-6 lg:px-8">' +
+      '    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_.8fr_.8fr_1fr]">' +
       '      <div><a href="index.html" class="flex items-center gap-2.5">' +
-      '        <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-teal-500 text-white"><i data-lucide="wrench" class="h-5 w-5"></i></span>' +
-      '        <span class="text-xl font-extrabold tracking-tight text-white">Fixora<span class="text-teal-400">.</span></span></a>' +
-      '        <p class="mt-4 text-sm leading-6 text-slate-400">Quick Repairs. Trusted Technicians.<br>Home appliance repair with transparent pricing and workmanship warranty.</p>' +
-      '        <div class="mt-4 flex gap-2 text-xs"><span class="rounded-full bg-slate-800 px-3 py-1 text-slate-300">Experienced techs</span><span class="rounded-full bg-slate-800 px-3 py-1 text-slate-300">30-day warranty</span></div>' +
+      '        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white shadow-sm"><i data-lucide="wrench" class="h-5 w-5"></i></span>' +
+      '        <span class="text-xl font-extrabold tracking-tight text-stone-900 dark:text-white">Fixora<span class="text-brand-600 dark:text-brand-300">.</span></span></a>' +
+      '        <p class="mt-4 max-w-xs text-sm leading-6 text-stone-600 dark:text-stone-400">Quick repairs. Trusted technicians. Thoughtful home appliance service with clear pricing and a 30-day workmanship warranty.</p>' +
+      '        <div class="mt-4 flex flex-wrap gap-2 text-xs"><span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-800 dark:bg-stone-800 dark:text-stone-200">Verified technicians</span><span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-800 dark:bg-stone-800 dark:text-stone-200">30-day warranty</span></div>' +
       '      </div>' +
-      '      <div><h4 class="text-sm font-bold uppercase tracking-wider text-white">Quick Links</h4><ul class="mt-4 space-y-2">' +
-      '        <li><a class="text-sm text-slate-400 hover:text-teal-400" href="index.html">Home 1</a></li><li><a class="text-sm text-slate-400 hover:text-teal-400" href="home2.html">Home 2</a></li>' +
-      '        <li><a class="text-sm text-slate-400 hover:text-teal-400" href="services.html">Services</a></li><li><a class="text-sm text-slate-400 hover:text-teal-400" href="pricing.html">Pricing Guide</a></li>' +
-      '        <li><a class="text-sm text-slate-400 hover:text-teal-400" href="dashboard.html">Customer Dashboard</a></li><li><a class="text-sm text-slate-400 hover:text-teal-400" href="admin-dashboard.html">Admin Dashboard</a></li></ul></div>' +
-      '      <div><h4 class="text-sm font-bold uppercase tracking-wider text-white">Services</h4><ul class="mt-4 space-y-2">' + svcLinks + '</ul></div>' +
-      '      <div><h4 class="text-sm font-bold uppercase tracking-wider text-white">Get in Touch</h4>' +
-      '        <ul class="mt-4 space-y-2 text-sm text-slate-400">' +
-      '        <li class="flex items-center gap-2"><i data-lucide="phone" class="h-4 w-4 text-teal-400"></i>+91 1800 123 4567</li>' +
-      '        <li class="flex items-center gap-2"><i data-lucide="mail" class="h-4 w-4 text-teal-400"></i>support@fixora.in</li>' +
-      '        <li class="flex items-center gap-2"><i data-lucide="clock" class="h-4 w-4 text-teal-400"></i>7:00 AM - 8:00 PM, all days</li>' +
-      '        <li class="flex items-start gap-2"><i data-lucide="map-pin" class="h-4 w-4 shrink-0 text-teal-400"></i>Mumbai & nearby areas<br><span class="text-xs text-slate-500">' + areaText + '</span></li></ul></div>' +
+      '      <div><h4 class="text-xs font-extrabold uppercase tracking-[.16em] text-stone-900 dark:text-white">Explore</h4><ul class="mt-4 space-y-2.5">' +
+      '        <li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="index.html">Home 1</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="home2.html">Home 2</a></li>' +
+      '        <li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="services.html">Services</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="pricing.html">Pricing guide</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="about.html">About Fixora</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="contact.html">Contact</a></li></ul></div>' +
+      '      <div><h4 class="text-xs font-extrabold uppercase tracking-[.16em] text-stone-900 dark:text-white">Your account</h4><ul class="mt-4 space-y-2.5"><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="dashboard.html">Customer dashboard</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="admin-dashboard.html">Admin dashboard</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="login.html">Sign in</a></li></ul><h4 class="mt-6 text-xs font-extrabold uppercase tracking-[.16em] text-stone-900 dark:text-white">Popular services</h4><ul class="mt-3 space-y-2">' + svcLinks + '</ul></div>' +
+      '      <div><h4 class="text-xs font-extrabold uppercase tracking-[.16em] text-stone-900 dark:text-white">We’re here to help</h4>' +
+      '        <ul class="mt-4 space-y-3 text-sm text-stone-600 dark:text-stone-400">' +
+      '        <li class="flex items-center gap-2.5"><i data-lucide="phone" class="h-4 w-4 text-brand-600 dark:text-brand-300"></i>+91 1800 123 4567</li>' +
+      '        <li class="flex items-center gap-2.5"><i data-lucide="mail" class="h-4 w-4 text-brand-600 dark:text-brand-300"></i>support@fixora.in</li>' +
+      '        <li class="flex items-center gap-2.5"><i data-lucide="clock" class="h-4 w-4 text-brand-600 dark:text-brand-300"></i>7:00 AM – 8:00 PM, daily</li>' +
+      '        <li class="flex items-start gap-2.5"><i data-lucide="map-pin" class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-300"></i><span>Mumbai & nearby areas<span class="mt-1 block text-xs text-stone-500 dark:text-stone-500">' + areaText + '</span></span></li></ul></div>' +
       '    </div>' +
-      '    <div class="mt-10 border-t border-slate-800 pt-6 flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-start">' +
-      '      <p class="text-xs text-slate-500">© 2026 Fixora Home Appliance Repair Service. Demo website — all data shown is fictional.</p>' +
-      '      <p class="text-xs text-slate-500">No real bookings, payments or tracking are processed on this site.</p>' +
+      '    <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-brand-200 pt-5 text-center sm:flex-row sm:text-start dark:border-stone-800">' +
+      '      <p class="text-xs text-stone-500 dark:text-stone-500">© 2026 Fixora Home Appliance Repair Service. Demo website — all data shown is fictional.</p>' +
+      '      <p class="text-xs text-stone-500 dark:text-stone-500">No real bookings, payments or tracking are processed on this site.</p>' +
       '    </div>' +
       '  </div></footer>';
     if (window.lucide) lucide.createIcons();
@@ -645,6 +677,64 @@
     style.id = 'fx-styles';
     style.textContent =
       '#fx-navbar{position:sticky;top:0;z-index:50}' +
+      'html,body{overflow-x:clip;max-width:100%}' +
+      'body{background-color:#f8f5ef!important}' +
+      'html.dark body{background-color:#0c0a09!important}' +
+      '[class~="bg-white"]{background-color:#fffdf8!important}' +
+      '.dark [class~="dark:bg-white/10"],.dark [class~="dark:hover:bg-white/20"]:hover{background-color:rgba(255,255,255,.12)!important}' +
+      '.dark [class~="dark:bg-white/15"]{background-color:rgba(255,255,255,.15)!important}' +
+      '.dark [class~="dark:bg-white/20"]{background-color:rgba(255,255,255,.2)!important}' +
+      '[class~="bg-slate-50"]{background-color:#f8f5ef!important}' +
+      '[class~="bg-slate-100"]{background-color:#f2e9dc!important}' +
+      '[class~="bg-slate-950"]{background-color:#291713!important}' +
+      '.dark [class~="dark:bg-slate-800"]{background-color:#292524!important}' +
+      '.dark [class~="dark:bg-slate-950"],.dark [class~="dark:bg-slate-950/90"]{background-color:#0c0a09!important}' +
+      '.dark [class~="dark:bg-slate-900"],.dark [class~="dark:bg-slate-900/95"],.dark [class~="dark:bg-slate-900/60"]{background-color:#1c1917!important}' +
+      '[class~="bg-blue-50"],[class~="bg-teal-50"]{background-color:#fff7f3!important}' +
+      '[class~="bg-blue-100"],[class~="bg-teal-100"]{background-color:#fce8df!important}' +
+      '[class~="bg-blue-200"],[class~="bg-teal-200"]{background-color:#f6cdbb!important}' +
+      '[class~="bg-blue-500"],[class~="bg-teal-500"]{background-color:#c45c3a!important}' +
+      '[class~="bg-blue-600"],[class~="bg-teal-600"]{background-color:#a9482d!important}' +
+      '[class~="bg-blue-700"]{background-color:#883923!important}' +
+      '[class~="bg-blue-800"]:hover,[class~="hover:bg-blue-800"]:hover,[class~="hover:bg-teal-700"]:hover{background-color:#682e21!important}' +
+      '[class~="bg-blue-800/40"]{background-color:rgba(136,57,35,.45)!important}' +
+      '[class~="hover:bg-blue-50"]:hover{background-color:#fff7f3!important}' +
+      '[class~="hover:bg-blue-100"]:hover{background-color:#fce8df!important}' +
+      '[class~="from-blue-50"]{--tw-gradient-from:#fff7f3 var(--tw-gradient-from-position);--tw-gradient-to:rgb(255 247 243 / 0) var(--tw-gradient-to-position)}' +
+      '[class~="to-teal-50"]{--tw-gradient-to:#fce8df var(--tw-gradient-to-position)}' +
+      '[class~="text-blue-50"],[class~="text-blue-100"],[class~="text-teal-50"],[class~="text-teal-100"]{color:#fce8df!important}' +
+      '[class~="text-blue-200"],[class~="text-teal-200"]{color:#f6cdbb!important}' +
+      '[class~="text-blue-300"],[class~="text-teal-300"]{color:#eba589!important}' +
+      '[class~="text-blue-400"],[class~="text-teal-400"]{color:#db805f!important}' +
+      '[class~="text-blue-500"],[class~="text-teal-500"]{color:#c45c3a!important}' +
+      '[class~="text-blue-600"]{color:#a9482d!important}' +
+      '[class~="text-blue-700"],[class~="text-teal-600"],[class~="text-teal-700"]{color:#883923!important}' +
+      '[class~="text-blue-800"],[class~="text-teal-800"]{color:#682e21!important}' +
+      '[class~="hover:text-blue-700"]:hover,[class~="hover:text-teal-400"]:hover{color:#a9482d!important}' +
+      '.dark [class~="dark:text-blue-300"],.dark [class~="dark:text-teal-300"]{color:#eba589!important}' +
+      '.dark [class~="dark:text-blue-400"],.dark [class~="dark:text-teal-400"]{color:#db805f!important}' +
+      '.dark [class~="dark:bg-blue-500/5"],.dark [class~="dark:bg-teal-500/5"]{background-color:rgba(196,92,58,.08)!important}' +
+      '.dark [class~="dark:bg-blue-500/10"],.dark [class~="dark:bg-teal-500/10"],.dark [class~="dark:bg-blue-500/15"]{background-color:rgba(196,92,58,.14)!important}' +
+      '[class~="border-blue-100"],[class~="border-blue-200"],[class~="border-teal-100"],[class~="border-teal-200"]{border-color:#f6cdbb!important}' +
+      '[class~="border-blue-300"],[class~="border-teal-300"],[class~="hover:border-blue-300"]:hover{border-color:#eba589!important}' +
+      '[class~="border-blue-400"],[class~="hover:border-blue-400"]:hover{border-color:#db805f!important}' +
+      '[class~="border-blue-600"],[class~="border-blue-700"],[class~="dark:border-blue-600"],[class~="dark:border-blue-700"]{border-color:#883923!important}' +
+      '.dark [class~="dark:border-blue-700/50"]{border-color:rgba(136,57,35,.5)!important}' +
+      '[class~="border-slate-200"]{border-color:#e7ddd2!important}' +
+      '.dark [class~="dark:border-slate-700"],.dark [class~="dark:border-slate-800"]{border-color:#44403c!important}' +
+      '[class~="focus:ring-blue-200"]{--tw-ring-color:#f6cdbb!important}' +
+      '[class~="ring-blue-100"]{--tw-ring-color:#f6cdbb!important}' +
+      '[class~="ring-blue-500/20"],[class~="dark:ring-blue-500/20"]{--tw-ring-color:rgba(196,92,58,.2)!important}' +
+      '[class~="from-blue-700"]{--tw-gradient-from:#883923 var(--tw-gradient-from-position);--tw-gradient-to:rgb(136 57 35 / 0) var(--tw-gradient-to-position)}' +
+      '[class~="from-blue-600"]{--tw-gradient-from:#a9482d var(--tw-gradient-from-position);--tw-gradient-to:rgb(169 72 45 / 0) var(--tw-gradient-to-position)}' +
+      '[class~="from-teal-600"]{--tw-gradient-from:#a9482d var(--tw-gradient-from-position);--tw-gradient-to:rgb(169 72 45 / 0) var(--tw-gradient-to-position)}' +
+      '[class~="from-brand-900"]{--tw-gradient-from:#48251d var(--tw-gradient-from-position);--tw-gradient-to:rgb(72 37 29 / 0) var(--tw-gradient-to-position)}' +
+      '[class~="to-teal-600"]{--tw-gradient-to:#a9482d var(--tw-gradient-to-position)}' +
+      '[class~="to-teal-500"]{--tw-gradient-to:#c45c3a var(--tw-gradient-to-position)}' +
+      '[class~="to-teal-700"]{--tw-gradient-to:#883923 var(--tw-gradient-to-position)}' +
+      '[class~="to-teal-800"]{--tw-gradient-to:#682e21 var(--tw-gradient-to-position)}' +
+      '[class~="to-teal-900"]{--tw-gradient-to:#48251d var(--tw-gradient-to-position)}' +
+      '[class~="via-brand-700"]{--tw-gradient-via:#883923 var(--tw-gradient-via-position)}' +
       '[dir="rtl"] .rtl-flip{transform:scaleX(-1)}' +
       '@keyframes fxToast{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}' +
       '@keyframes fxIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}' +
@@ -666,11 +756,14 @@
       '  .fx-sb-backdrop.fx-sb-backdrop-open{opacity:1;pointer-events:auto}' +
       '}' +
       '@media (min-width:1024px){' +
-      '  .fx-sb{transform:none!important;position:static;width:16.5rem;flex:0 0 16.5rem;display:flex!important;flex-direction:column}' +
+      '  .fx-sb{transform:none!important;position:sticky;top:0;height:100vh;width:16.5rem;flex:0 0 16.5rem;display:flex!important;flex-direction:column}' +
       '  .fx-sb-backdrop{display:none}' +
       '}' +
-      '.fx-tab-active{background:#1d4ed8;color:#fff!important;box-shadow:0 4px 14px rgba(29,78,216,.35)}' +
-      '.dark .fx-tab-active{background:#3b82f6}' +
+      '.fx-tab-active{background:#883923;color:#fff!important;box-shadow:0 4px 14px rgba(136,57,35,.25)}' +
+      '.dark .fx-tab-active{background:#a9482d}' +
+      '.fx-sb-item{border-inline-start:3px solid transparent}' +
+      '.fx-sb-item-active{border-inline-start-color:#c45c3a;background:#fce8df!important;color:#682e21!important;box-shadow:0 3px 10px rgba(104,46,33,.06)}' +
+      '.dark .fx-sb-item-active{background:rgba(196,92,58,.16)!important;color:#f6cdbb!important}' +
       '.fx-hover-card{transition:transform .2s ease,box-shadow .2s ease}' +
       '.fx-hover-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -12px rgba(2,6,23,.22)}' +
       '.fx-stats-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}' +

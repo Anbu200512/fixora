@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Customer Dashboard | Fixora</title>
   <meta name="description" content="Your Fixora dashboard — book repairs, track technicians, view service history, receipts and notifications.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231d4ed8'/%3E%3Cstop offset='1' stop-color='%230d9488'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23883923'/%3E%3Cstop offset='1' stop-color='%23c45c3a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
   <script>!function(){try{var t=JSON.parse(localStorage.getItem('fixora_theme')||'null');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}}();</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -14,7 +14,7 @@
       theme: {
         extend: {
           colors: {
-            brand: { 50:'#eef6ff',100:'#d9eaff',200:'#bcd9ff',300:'#8ec0ff',400:'#599dff',500:'#3378f6',600:'#1d5be0',700:'#1847b6',800:'#183d8f',900:'#0f2a63',950:'#0a1c42' }
+            brand: { 50:'#fff7f3',100:'#fce8df',200:'#f6cdbb',300:'#eba589',400:'#db805f',500:'#c45c3a',600:'#a9482d',700:'#883923',800:'#682e21',900:'#48251d',950:'#291713' }
           },
           fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif'] }
         }
@@ -39,6 +39,8 @@
         <button id="fxSidebarClose" class="rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 lg:hidden" aria-label="Close sidebar"><i data-lucide="x" class="h-5 w-5"></i></button>
       </div>
 
+      <div class="px-4 pb-1 pt-4"><div class="rounded-2xl border border-brand-200 bg-brand-50 p-4 dark:border-stone-700 dark:bg-stone-800"><p class="text-[10px] font-extrabold uppercase tracking-[.18em] text-brand-700 dark:text-brand-300">Customer space</p><p class="mt-1 text-sm font-bold text-stone-900 dark:text-white">Your home, in good hands.</p><p class="mt-1 text-xs leading-5 text-stone-500 dark:text-stone-400">Book, manage and track your repairs.</p></div></div>
+
       <nav class="p-3" aria-label="Customer dashboard">
         <p class="px-3 pb-1 pt-3 text-xs font-bold uppercase tracking-wider text-slate-400">Repairs</p>
         <div class="grid gap-1">
@@ -49,28 +51,9 @@
           <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="history"><i data-lucide="history" class="h-4 w-4"></i>Service History</button>
           <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="payments"><i data-lucide="receipt" class="h-4 w-4"></i>Payments & Receipts</button>
         </div>
-        <p class="px-3 pb-1 pt-4 text-xs font-bold uppercase tracking-wider text-slate-400">Account</p>
-        <div class="grid gap-1">
-          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="notifications">
-            <i data-lucide="bell" class="h-4 w-4"></i>Notifications
-            <span class="fx-sb-badge ms-auto hidden rounded-full bg-rose-500 px-2 py-0.5 text-xs font-bold text-white">0</span>
-          </button>
-          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white" data-section="profile"><i data-lucide="user-round" class="h-4 w-4"></i>Profile</button>
-          <button class="fx-sb-item flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-rose-600 transition hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-500/10" data-section="logout"><i data-lucide="log-out" class="h-4 w-4 rtl-flip"></i>Logout</button>
-        </div>
-        <p class="px-3 pb-1 pt-4 text-xs font-bold uppercase tracking-wider text-slate-400">Preferences</p>
-        <div class="grid gap-1">
-          <button id="fxThemeBtn2" data-fx-theme-btn class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"><i data-fx-theme-icon data-lucide="moon" class="h-4 w-4"></i>Theme</button>
-          <button id="fxDirBtn2" data-fx-dir-btn class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"><i data-fx-dir-icon data-lucide="arrow-right-left" class="h-4 w-4"></i>Direction (RTL/LTR)</button>
-        </div>
       </nav>
-
-      <div class="mt-auto p-4">
-        <div class="rounded-2xl bg-gradient-to-br from-blue-700 to-teal-600 p-4 text-white">
-          <p class="text-sm font-extrabold"><i data-lucide="headphones" class="me-1 inline h-4 w-4"></i>Need help?</p>
-          <p class="mt-1 text-xs leading-relaxed text-blue-100">Call +91 1800 123 4567 (demo) or write to support@fixora.in</p>
-          <a href="index.html#contact" class="mt-3 inline-block rounded-lg bg-white/15 px-3 py-1.5 text-xs font-bold ring-1 ring-white/25 hover:bg-white/25">Contact us</a>
-        </div>
+      <div class="mt-auto border-t border-slate-200 p-3 dark:border-slate-800">
+        <button id="fxSidebarLogout" class="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-rose-700 transition hover:bg-rose-50 dark:text-rose-300 dark:hover:bg-rose-500/10"><i data-lucide="log-out" class="h-4 w-4"></i>Logout</button>
       </div>
     </aside>
     <div id="fxSidebarBackdrop" class="fx-sb-backdrop"></div>
@@ -79,7 +62,13 @@
     <div class="flex min-w-0 flex-1 flex-col">
       <header class="sticky top-0 z-40 flex h-16 items-center gap-3 border-b border-slate-200 bg-white/95 px-4 backdrop-blur dark:border-slate-800 dark:bg-slate-900/95 sm:px-6 lg:px-8">
         <h1 id="fxPageTitle" class="text-lg font-extrabold tracking-tight text-slate-900 dark:text-white">Dashboard</h1>
-        <button id="fxMenuBtn2" class="ms-auto rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden" aria-label="Open sidebar"><i data-lucide="menu" class="h-6 w-6"></i></button>
+        <div class="ms-auto flex items-center gap-1">
+          <button data-fx-theme-btn class="rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-label="Toggle theme" title="Toggle theme"><i data-fx-theme-icon data-lucide="moon" class="h-5 w-5"></i></button>
+          <button data-fx-dir-btn class="rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-label="Toggle direction" title="Toggle direction"><i data-fx-dir-icon data-lucide="arrow-left" class="h-5 w-5"></i></button>
+          <button id="fxTopNotifications" class="relative rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-label="Notifications" title="Notifications"><i data-lucide="bell" class="h-5 w-5"></i><span class="fx-top-badge absolute -end-0.5 -top-0.5 hidden min-w-4 rounded-full bg-brand-600 px-1 text-[10px] font-bold leading-4 text-white"></span></button>
+          <button id="fxTopProfile" class="rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800" aria-label="Profile" title="Profile"><i data-lucide="user-round" class="h-5 w-5"></i></button>
+          <button id="fxMenuBtn2" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden" aria-label="Open sidebar"><i data-lucide="menu" class="h-6 w-6"></i></button>
+        </div>
       </header>
 
       <main id="fxMain" class="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8"></main>

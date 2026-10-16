@@ -43,6 +43,8 @@
         '<div><p class="text-sm font-bold text-slate-900 dark:text-white">' + Fixora.esc(t.name) + '</p><p class="text-xs text-slate-400">' + Fixora.esc(t.specialty) + '</p></div></div>' +
         '<span class="flex items-center gap-1 text-xs font-bold text-amber-500"><i data-lucide="star" class="h-3.5 w-3.5 fill-current"></i>' + t.rating + '</span></div>';
     }).join('');
+    var activeTech = technicians.filter(function (t) { return t.active; }).length;
+    var newEnquiries = enquiries.filter(function (e) { return e.status === 'New'; }).length;
     return '<div class="grid gap-6">' +
       '  <div class="rounded-2xl bg-gradient-to-br from-blue-700 to-teal-600 p-6 text-white shadow-lg md:p-8">' +
       '    <p class="text-sm font-semibold text-blue-100">Admin overview</p>' +
@@ -66,7 +68,12 @@
       '    <div class="grid gap-6">' +
       '      <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900"><h2 class="text-base font-extrabold text-slate-900 dark:text-white">Status distribution</h2><div class="mt-4 grid gap-3">' + dist + '</div></div>' +
       '      <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900"><h2 class="text-base font-extrabold text-slate-900 dark:text-white">Top technicians</h2><div class="mt-3 grid gap-3">' + topTech + '</div></div>' +
-      '    </div></div></div>';
+      '    </div></div>' +
+      '  <div class="grid gap-4 md:grid-cols-3">' +
+      '    <article class="rounded-2xl border border-brand-200 bg-[#fffdf8] p-5 dark:border-stone-700 dark:bg-stone-900"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="zap" class="h-5 w-5"></i></span><h2 class="mt-4 font-extrabold text-stone-900 dark:text-white">Quick actions</h2><div class="mt-3 grid gap-2"><button class="fx-section-go flex items-center justify-between rounded-xl bg-brand-50 px-3 py-2.5 text-start text-sm font-bold text-brand-800 transition hover:bg-brand-100 dark:bg-stone-800 dark:text-brand-200 dark:hover:bg-stone-700" data-go="bookings">Manage bookings<i data-lucide="arrow-up-right" class="h-4 w-4"></i></button><button class="fx-section-go flex items-center justify-between rounded-xl px-3 py-2.5 text-start text-sm font-bold text-stone-600 transition hover:bg-brand-50 dark:text-stone-300 dark:hover:bg-stone-800" data-go="technicians">View technicians<i data-lucide="arrow-up-right" class="h-4 w-4"></i></button></div></article>' +
+      '    <article class="rounded-2xl border border-brand-200 bg-[#fffdf8] p-5 dark:border-stone-700 dark:bg-stone-900"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="users-round" class="h-5 w-5"></i></span><h2 class="mt-4 font-extrabold text-stone-900 dark:text-white">Service network</h2><p class="mt-2 text-sm leading-6 text-stone-600 dark:text-stone-300"><strong class="text-stone-900 dark:text-white">' + activeTech + ' technicians available</strong><br>' + services.length + ' services across ' + areas.length + ' service areas.</p><button class="mt-3 inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:underline dark:text-brand-300 fx-section-go" data-go="services">Manage services<i data-lucide="arrow-up-right" class="h-4 w-4"></i></button></article>' +
+      '    <article class="rounded-2xl border border-brand-200 bg-[#fffdf8] p-5 dark:border-stone-700 dark:bg-stone-900"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="inbox" class="h-5 w-5"></i></span><h2 class="mt-4 font-extrabold text-stone-900 dark:text-white">Customer enquiries</h2><p class="mt-2 text-sm leading-6 text-stone-600 dark:text-stone-300">' + newEnquiries + ' new messages are waiting for a response.</p><button class="mt-3 inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:underline dark:text-brand-300 fx-section-go" data-go="enquiries">Open inbox<i data-lucide="arrow-up-right" class="h-4 w-4"></i></button></article>' +
+      '  </div></div>';
   }
 
   /* ================= bookings ================= */
@@ -693,13 +700,7 @@
     if (window.lucide) lucide.createIcons();
   }
 
-  /* ---------- sidebar / auth ---------- */
-  function doLogout() {
-    Fixora.auth.logout();
-    Fixora.toast('Logged out of admin panel.', 'info');
-    setTimeout(function () { location.href = 'index.html'; }, 500);
-  }
-
+  /* ---------- sidebar ---------- */
   function openDrawer() {
     var sb = document.getElementById('fxSidebar');
     var bd = document.getElementById('fxSidebarBackdrop');
@@ -725,25 +726,41 @@
   var user;
 
   function boot() {
-    user = Fixora.auth.require('admin');
-    if (!user) return;
+    user = Fixora.currentUser();
+    if (!user || user.role !== 'admin') {
+      var demoAdmin = Fixora.auth.users().find(function (account) { return account.role === 'admin'; });
+      user = demoAdmin
+        ? { id: demoAdmin.id, name: demoAdmin.name, email: demoAdmin.email, phone: demoAdmin.phone, role: 'admin', joined: demoAdmin.joined }
+        : { id: 'u-admin-demo', name: 'Fixora Admin', email: '', phone: '', role: 'admin', joined: Fixora.today() };
+      Fixora.setCurrentUser(user);
+    }
     refreshAll();
-
-    var themeBtn = document.getElementById('fxThemeBtn2');
-    if (themeBtn) themeBtn.addEventListener('click', function () { Fixora.toggleTheme(); });
-    var dirBtn = document.getElementById('fxDirBtn2');
-    if (dirBtn) dirBtn.addEventListener('click', function () { Fixora.toggleDirection(); });
 
     document.querySelectorAll('.fx-sb-item').forEach(function (it) {
       var sec = it.getAttribute('data-section');
-      if (sec === 'logout') {
-        it.addEventListener('click', function (e) {
-          e.preventDefault();
-          Fixora.confirm({ title: 'Log out of admin panel?', message: 'You will need to log in as admin again to access this dashboard.', confirmText: 'Logout', variant: 'danger' }).then(function (ok) { if (ok) doLogout(); });
-        });
-      } else if (sec) {
+      if (sec) {
         it.addEventListener('click', function () { setSection(sec); closeDrawer(); });
       }
+    });
+
+    var inboxBadge = document.querySelector('.fx-admin-inbox-badge');
+    var newEnquiriesCount = enquiries.filter(function (e) { return e.status === 'New'; }).length;
+    if (inboxBadge) {
+      inboxBadge.textContent = newEnquiriesCount;
+      inboxBadge.classList.toggle('hidden', newEnquiriesCount === 0);
+    }
+    var inboxBtn = document.getElementById('fxTopNotifications');
+    if (inboxBtn) inboxBtn.addEventListener('click', function () { setSection('enquiries'); });
+    var settingsBtn = document.getElementById('fxTopSettings');
+    if (settingsBtn) settingsBtn.addEventListener('click', function () { setSection('settings'); });
+    var themeBtn = document.querySelector('[data-fx-theme-btn]');
+    if (themeBtn) themeBtn.addEventListener('click', function () { Fixora.toggleTheme(); });
+    var directionBtn = document.querySelector('[data-fx-dir-btn]');
+    if (directionBtn) directionBtn.addEventListener('click', function () { Fixora.toggleDirection(); });
+    var logoutBtn = document.getElementById('fxSidebarLogout');
+    if (logoutBtn) logoutBtn.addEventListener('click', function () {
+      Fixora.auth.logout();
+      location.href = 'login.html';
     });
 
     document.getElementById('fxMenuBtn2').addEventListener('click', openDrawer);

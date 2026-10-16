@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | Fixora Appliance Repair</title>
   <meta name="description" content="Browse Fixora's appliance repair services — refrigerators, washing machines, ACs, TVs, microwaves, dishwashers, water heaters and kitchen appliances with transparent starting prices.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231d4ed8'/%3E%3Cstop offset='1' stop-color='%230d9488'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23883923'/%3E%3Cstop offset='1' stop-color='%23c45c3a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
   <script>!function(){try{var t=JSON.parse(localStorage.getItem('fixora_theme')||'null');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}}();</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -14,7 +14,7 @@
       theme: {
         extend: {
           colors: {
-            brand: { 50:'#eef6ff',100:'#d9eaff',200:'#bcd9ff',300:'#8ec0ff',400:'#599dff',500:'#3378f6',600:'#1d5be0',700:'#1847b6',800:'#183d8f',900:'#0f2a63',950:'#0a1c42' }
+            brand: { 50:'#fff7f3',100:'#fce8df',200:'#f6cdbb',300:'#eba589',400:'#db805f',500:'#c45c3a',600:'#a9482d',700:'#883923',800:'#682e21',900:'#48251d',950:'#291713' }
           },
           fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica Neue','Arial','sans-serif'] }
         }
@@ -32,10 +32,10 @@
   <!-- ============ PAGE HEADER ============ -->
   <section class="bg-gradient-to-br from-brand-950 via-brand-900 to-teal-800 py-16 text-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-teal-200 ring-1 ring-white/20"><i data-lucide="wrench" class="h-3.5 w-3.5"></i>Our services</span>
-      <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Repair services for every appliance</h1>
-      <p class="mt-3 max-w-2xl text-base leading-relaxed text-blue-100">Every service includes a free on-site diagnosis when you approve the repair, genuine parts, and a 30-day workmanship warranty. Pick a category below or ask us a question.</p>
-      <div class="mt-6 flex flex-wrap gap-2 text-sm text-blue-100">
+      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-200 ring-1 ring-white/20"><i data-lucide="wrench" class="h-4 w-4"></i>Fixora home services</span>
+      <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Expert repairs for the appliances you rely on</h1>
+      <p class="mt-3 max-w-2xl text-base leading-relaxed text-brand-100">From everyday essentials to big-ticket appliances, our local technicians make getting things working again simple. Browse the services below and find the right repair for your home.</p>
+      <div class="mt-6 flex flex-wrap gap-2 text-sm text-brand-100">
         <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="badge-check" class="me-1 inline h-3.5 w-3.5"></i>Verified technicians</span>
         <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="shield-check" class="me-1 inline h-3.5 w-3.5"></i>30-day warranty</span>
         <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="timer" class="me-1 inline h-3.5 w-3.5"></i>Same-day slots</span>
@@ -51,7 +51,7 @@
 
   <!-- ============ SERVICE CARDS ============ -->
   <section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-    <div id="fxServicesList" class="grid gap-8"></div>
+    <div id="fxServicesList" class="grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3"></div>
   </section>
 
   <!-- ============ HELP STRIP ============ -->

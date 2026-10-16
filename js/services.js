@@ -7,37 +7,35 @@
   function slug(id) { return id.replace('sv-', ''); }
 
   function serviceCard(s) {
-    var problems = (s.problems || []).map(function (p) {
+    var problems = (s.problems || []).slice(0, 2).map(function (p) {
       return '<li class="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300"><i data-lucide="circle-check" class="mt-0.5 h-4 w-4 shrink-0 text-teal-600 dark:text-teal-400"></i>' + Fixora.esc(p) + '</li>';
     }).join('');
     var process = (s.process || []).map(function (p, i) {
       return '<div class="flex gap-3"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">' + (i + 1) + '</span><p class="pt-0.5 text-sm text-slate-600 dark:text-slate-300">' + Fixora.esc(p) + '</p></div>';
     }).join('');
     return '' +
-      '<article id="sv-' + slug(s.id) + '" class="fx-service-card rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900" data-cat="' + Fixora.esc(s.name) + '">' +
-      '  <div class="grid md:grid-cols-2">' +
-      '    <div class="relative min-h-[220px] md:min-h-[300px]"><img src="' + s.image + '" alt="' + Fixora.esc(s.name) + ' service" class="absolute inset-0 h-full w-full object-cover md:rounded-s-2xl" loading="lazy"></div>' +
-      '    <div class="p-6 md:p-8">' +
-      '      <div class="flex flex-wrap items-center justify-between gap-3">' +
-      '        <span class="flex items-center gap-2.5">' +
-      '          <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-white"><i data-lucide="' + s.icon + '" class="h-5 w-5"></i></span>' +
-      '          <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">' + Fixora.esc(s.name) + '</h3></span>' +
-      '        <span class="rounded-full bg-teal-50 px-3 py-1 text-sm font-bold text-teal-700 dark:bg-teal-500/10 dark:text-teal-300">From ' + Fixora.money(s.price) + '</span>' +
-      '      </div>' +
-      '      <p class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">' + Fixora.esc(s.desc) + '</p>' +
-      '      <div class="mt-4 grid gap-6 md:grid-cols-2">' +
-      '        <div><h4 class="text-xs font-bold uppercase tracking-wider text-slate-400">Common problems</h4><ul class="mt-2 space-y-2">' + problems + '</ul></div>' +
-      '        <div class="rounded-xl bg-slate-50 p-4 dark:bg-slate-800/60"><h4 class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400"><i data-lucide="search" class="h-3.5 w-3.5"></i>Inspection & diagnosis</h4>' +
-      '          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">' + Fixora.esc(s.diag) + '</p>' +
-      '          <p class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-500/10 dark:text-amber-300"><i data-lucide="info" class="h-3.5 w-3.5"></i>Prices are sample estimates</p></div>' +
-      '      </div>' +
-      '      <details class="group mt-5 rounded-xl border border-slate-200 dark:border-slate-700"><summary class="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-bold text-slate-800 dark:text-slate-100">Our repair process<i data-lucide="chevron-down" class="h-4 w-4 transition group-open:rotate-180 rtl-flip"></i></summary>' +
-      '        <div class="grid gap-3 px-4 pb-4 pt-1 sm:grid-cols-2">' + process + '</div></details>' +
-      '      <div class="mt-6 flex flex-wrap gap-3">' +
-      '        <button class="fx-book-appliance inline-flex items-center gap-2 rounded-xl bg-blue-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-blue-800" data-appliance="' + Fixora.esc(s.name) + '"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book Repair</button>' +
-      '        <button class="fx-open-enquiry inline-flex items-center gap-2 rounded-xl border border-slate-300 px-5 py-2.5 text-sm font-bold text-slate-700 transition hover:bg-slate-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800" data-appliance="' + Fixora.esc(s.name) + '"><i data-lucide="message-square" class="h-4 w-4"></i>Ask a Question</button>' +
-      '      </div>' +
-      '    </div></div>' +
+      '<article id="sv-' + slug(s.id) + '" class="fx-service-card group flex flex-col overflow-hidden rounded-3xl border border-brand-200 bg-[#fffdf8] shadow-sm dark:border-stone-700 dark:bg-stone-900" data-cat="' + Fixora.esc(s.name) + '">' +
+      '  <div class="relative h-40 overflow-hidden bg-stone-200">' +
+      '    <img src="' + s.image + '" alt="' + Fixora.esc(s.name) + ' service" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy">' +
+      '    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/65 via-transparent to-transparent"></div>' +
+      '    <span class="absolute bottom-4 start-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#fffdf8] text-brand-700 shadow-lg"><i data-lucide="' + s.icon + '" class="h-5 w-5"></i></span>' +
+      '    <span class="absolute end-4 top-4 rounded-full bg-[#fffdf8]/95 px-3 py-1.5 text-xs font-extrabold text-brand-800 shadow">From ' + Fixora.money(s.price) + '</span>' +
+      '    <span class="absolute bottom-5 start-[4.25rem] text-xs font-bold uppercase tracking-wider text-white">' + Fixora.esc(s.name) + '</span>' +
+      '  </div>' +
+      '  <div class="flex flex-1 flex-col p-5 sm:p-6">' +
+      '    <h3 class="text-xl font-extrabold tracking-tight text-stone-900 dark:text-white">' + Fixora.esc(s.name) + '</h3>' +
+      '    <p class="mt-2 line-clamp-2 text-sm leading-5 text-stone-600 dark:text-stone-300">' + Fixora.esc(s.desc) + '</p>' +
+      '    <div class="mt-4 border-t border-brand-100 pt-3 dark:border-stone-700">' +
+      '      <h4 class="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-300"><i data-lucide="stethoscope" class="h-4 w-4"></i>Common fixes</h4>' +
+      '      <ul class="mt-2 space-y-1.5">' + problems + '</ul>' +
+      '    </div>' +
+      '    <details class="group mt-3 rounded-xl border border-brand-200 dark:border-stone-700"><summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2.5 text-xs font-bold text-stone-800 dark:text-stone-100">Diagnosis & repair steps<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 transition group-open:rotate-180 rtl-flip"></i></summary>' +
+      '      <div class="px-3 pb-3 pt-1"><p class="mb-3 text-xs leading-5 text-stone-600 dark:text-stone-300">' + Fixora.esc(s.diag) + '</p><div class="grid gap-2">' + process + '</div><p class="mt-3 text-[11px] font-semibold text-stone-500 dark:text-stone-400">Sample estimate; final quote after inspection.</p></div></details>' +
+      '    <div class="mt-auto flex flex-wrap items-center gap-2 pt-4">' +
+      '      <button class="fx-book-appliance inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-700 px-3 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-brand-800" data-appliance="' + Fixora.esc(s.name) + '"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book repair</button>' +
+      '      <button class="fx-open-enquiry inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 px-3 py-2.5 text-sm font-bold text-stone-600 transition hover:bg-brand-50 hover:text-brand-800 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800 dark:hover:text-brand-200" data-appliance="' + Fixora.esc(s.name) + '"><i data-lucide="message-square" class="h-4 w-4"></i><span class="hidden sm:inline">Ask</span></button>' +
+      '    </div>' +
+      '  </div>' +
       '</article>';
   }
 
@@ -153,10 +151,8 @@
   }
 
   Fixora.bookService = function (appliance) {
-    var u = Fixora.currentUser();
     var q = 'dashboard.html?book=' + encodeURIComponent(appliance || '');
-    if (u) location.href = q;
-    else location.href = 'login.html?next=' + encodeURIComponent(q);
+    location.href = q;
   };
 
   function bindBookButtons() {

@@ -86,6 +86,11 @@
       '      <div class="flex items-center justify-between"><h2 class="text-base font-extrabold text-slate-900 dark:text-white">Recent bookings</h2>' +
       '        <button class="fx-section-go text-sm font-bold text-blue-700 dark:text-blue-300" data-go="bookings">View all</button></div>' +
       '      <div class="mt-3 grid gap-3">' + (recent.map(bookingMini).join('') || '<p class="text-sm text-slate-500 dark:text-slate-400">No bookings yet — book your first repair.</p>') + '</div></div>' +
+      '  </div>' +
+      '  <div class="grid gap-4 md:grid-cols-3">' +
+      '    <article class="rounded-2xl border border-brand-200 bg-[#fffdf8] p-5 dark:border-stone-700 dark:bg-stone-900"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="zap" class="h-5 w-5"></i></span><h2 class="mt-4 font-extrabold text-stone-900 dark:text-white">Quick actions</h2><div class="mt-3 grid gap-2"><button class="fx-section-go flex items-center justify-between rounded-xl bg-brand-50 px-3 py-2.5 text-start text-sm font-bold text-brand-800 transition hover:bg-brand-100 dark:bg-stone-800 dark:text-brand-200 dark:hover:bg-stone-700" data-go="book">Book a repair<i data-lucide="arrow-up-right" class="h-4 w-4"></i></button><button class="fx-section-go flex items-center justify-between rounded-xl px-3 py-2.5 text-start text-sm font-bold text-stone-600 transition hover:bg-brand-50 dark:text-stone-300 dark:hover:bg-stone-800" data-go="track">Track a technician<i data-lucide="arrow-up-right" class="h-4 w-4"></i></button></div></article>' +
+      '    <article class="rounded-2xl border border-brand-200 bg-[#fffdf8] p-5 dark:border-stone-700 dark:bg-stone-900"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="shield-check" class="h-5 w-5"></i></span><h2 class="mt-4 font-extrabold text-stone-900 dark:text-white">The Fixora promise</h2><ul class="mt-3 space-y-2 text-sm text-stone-600 dark:text-stone-300"><li class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-brand-600 dark:text-brand-300"></i>Approve the quote before work</li><li class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-brand-600 dark:text-brand-300"></i>30-day workmanship warranty</li><li class="flex items-center gap-2"><i data-lucide="check" class="h-4 w-4 text-brand-600 dark:text-brand-300"></i>Verified local technicians</li></ul></article>' +
+      '    <article class="rounded-2xl border border-brand-200 bg-[#fffdf8] p-5 dark:border-stone-700 dark:bg-stone-900"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="map-pinned" class="h-5 w-5"></i></span><h2 class="mt-4 font-extrabold text-stone-900 dark:text-white">We’re nearby</h2><p class="mt-2 text-sm leading-6 text-stone-600 dark:text-stone-300">Serving Mumbai homes, including Andheri, Bandra, Powai and nearby areas.</p><a href="contact.html" class="mt-3 inline-flex items-center gap-1 text-sm font-bold text-brand-700 hover:underline dark:text-brand-300">Contact our team<i data-lucide="arrow-up-right" class="h-4 w-4"></i></a></article>' +
       '  </div></div>';
   }
 
@@ -280,16 +285,15 @@
       '    <form id="fxProfileForm" class="mt-6 grid gap-4">' +
       '      <div data-field><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Full name *</label>' +
       '        <input id="pfName" value="' + Fixora.esc(u2.name) + '" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-white"><p data-field-error class="hidden"></p></div>' +
-      '      <div><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Email</label>' +
-      '        <input value="' + Fixora.esc(u2.email) + '" disabled class="mt-1 w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-400 dark:border-slate-700 dark:bg-slate-800/60"><p class="mt-1 text-xs text-slate-400">Email is your login ID and cannot be changed.</p></div>' +
+      '      <div><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Contact email</label>' +
+      '        <input value="' + Fixora.esc(u2.email) + '" disabled class="mt-1 w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-400 dark:border-slate-700 dark:bg-slate-800/60"><p class="mt-1 text-xs text-slate-400">Contact email shown on this demo profile.</p></div>' +
       '      <div><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Phone *</label>' +
       '        <input id="pfPhone" value="' + Fixora.esc(u2.phone) + '" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-white"></div>' +
       '      <div data-field><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Default service address</label>' +
       '        <input id="pfAddress" value="' + Fixora.esc(u2.address || '') + '" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="Flat / street / city"><p data-field-error class="hidden"></p></div>' +
-      '      <div class="flex flex-wrap gap-3"><button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-blue-800"><i data-lucide="check" class="h-4 w-4"></i>Save changes</button>' +
-      '      <button id="fxLogoutBtn2" class="inline-flex items-center gap-2 rounded-xl border border-rose-300 px-5 py-2.5 text-sm font-bold text-rose-600 hover:bg-rose-50 dark:border-rose-700 dark:text-rose-400 dark:hover:bg-rose-500/10"><i data-lucide="log-out" class="h-4 w-4 rtl-flip"></i>Logout</button></div>' +
+      '      <div class="flex flex-wrap gap-3"><button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-5 py-2.5 text-sm font-bold text-white hover:bg-blue-800"><i data-lucide="check" class="h-4 w-4"></i>Save changes</button></div>' +
       '    </form>' +
-      '    <p class="mt-6 rounded-xl bg-slate-50 p-4 text-xs leading-relaxed text-slate-500 dark:bg-slate-800 dark:text-slate-400">Demo account: sign-in is simulated with data stored only on this device. No real passwords are transmitted, and this is not production-grade authentication.</p>' +
+      '    <p class="mt-6 rounded-xl bg-slate-50 p-4 text-xs leading-relaxed text-slate-500 dark:bg-slate-800 dark:text-slate-400">Demo profile details and dashboard activity are stored in this browser.</p>' +
       '  </div></div>';
   }
 
@@ -568,30 +572,27 @@
       Fixora.toast('Profile updated.', 'success');
       setSection('profile');
     });
-    var lo = document.getElementById('fxLogoutBtn2');
-    if (lo) lo.addEventListener('click', function () { doLogout(); });
   }
 
   function updateBadges() {
     var unread = Fixora.get('fixora_notifications', []).filter(function (n) { return n.userId === user.id && !n.read; }).length;
-    var badges = document.querySelectorAll('.fx-sb-badge');
+    var badges = document.querySelectorAll('.fx-top-badge');
     badges.forEach(function (b2) {
       b2.textContent = unread;
       b2.classList.toggle('hidden', unread === 0);
     });
   }
 
-  /* ---------- logout ---------- */
-  function doLogout() {
-    Fixora.auth.logout();
-    Fixora.toast('Logged out. See you soon!', 'info');
-    setTimeout(function () { location.href = 'index.html'; }, 500);
-  }
-
   /* ---------- state ---------- */
   function refreshState() {
     var u = Fixora.currentUser();
-    if (!u) { location.href = 'login.html?next=dashboard.html'; return; }
+    if (!u || u.role !== 'customer') {
+      var demo = Fixora.auth.users().find(function (account) { return account.role === 'customer'; });
+      u = demo
+        ? { id: demo.id, name: demo.name, email: demo.email, phone: demo.phone, role: 'customer', joined: demo.joined, address: demo.address || '' }
+        : { id: 'u-guest', name: 'Guest Customer', email: '', phone: '', role: 'customer', joined: Fixora.today(), address: '' };
+      Fixora.setCurrentUser(u);
+    }
     user = u;
     bookings = Fixora.bookings.forUser(u.id);
   }
@@ -602,21 +603,25 @@
     refreshState();
     if (!user) return;
 
-    var themeBtn = document.getElementById('fxThemeBtn2');
-    if (themeBtn) themeBtn.addEventListener('click', function () { Fixora.toggleTheme(); });
-    var dirBtn = document.getElementById('fxDirBtn2');
-    if (dirBtn) dirBtn.addEventListener('click', function () { Fixora.toggleDirection(); });
-
     document.querySelectorAll('.fx-sb-item').forEach(function (it) {
       var sec = it.getAttribute('data-section');
-      if (sec === 'logout') {
-        it.addEventListener('click', function (e) {
-          e.preventDefault();
-          Fixora.confirm({ title: 'Log out of Fixora?', message: 'You will need to login again to access your dashboard.', confirmText: 'Logout', variant: 'danger' }).then(function (ok) { if (ok) doLogout(); });
-        });
-      } else if (sec) {
+      if (sec) {
         it.addEventListener('click', function () { setSection(sec); closeDrawer(); });
       }
+    });
+
+    var notificationsBtn = document.getElementById('fxTopNotifications');
+    if (notificationsBtn) notificationsBtn.addEventListener('click', function () { setSection('notifications'); });
+    var profileBtn = document.getElementById('fxTopProfile');
+    if (profileBtn) profileBtn.addEventListener('click', function () { setSection('profile'); });
+    var themeBtn = document.querySelector('[data-fx-theme-btn]');
+    if (themeBtn) themeBtn.addEventListener('click', function () { Fixora.toggleTheme(); });
+    var directionBtn = document.querySelector('[data-fx-dir-btn]');
+    if (directionBtn) directionBtn.addEventListener('click', function () { Fixora.toggleDirection(); });
+    var logoutBtn = document.getElementById('fxSidebarLogout');
+    if (logoutBtn) logoutBtn.addEventListener('click', function () {
+      Fixora.auth.logout();
+      location.href = 'login.html';
     });
 
     var openBtn = document.getElementById('fxMenuBtn2');

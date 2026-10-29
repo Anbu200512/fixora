@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | Fixora Appliance Repair</title>
-  <meta name="description" content="Browse Fixora's appliance repair services — refrigerators, washing machines, ACs, TVs, microwaves, dishwashers, water heaters and kitchen appliances with transparent starting prices.">
+  <meta name="description" content="Browse Fixora's appliance repair services — refrigerators, washing machines, ACs, ovens, TVs, microwaves, dishwashers, water heaters and kitchen appliances with visit charges and estimated repair costs.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23883923'/%3E%3Cstop offset='1' stop-color='%23c45c3a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
   <script>!function(){try{var t=JSON.parse(localStorage.getItem('fixora_theme')||'null');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}}();</script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -30,21 +30,61 @@
   <div id="fx-navbar"></div>
 
   <!-- ============ PAGE HEADER ============ -->
-  <section class="bg-gradient-to-br from-brand-950 via-brand-900 to-teal-800 py-16 text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-200 ring-1 ring-white/20"><i data-lucide="wrench" class="h-4 w-4"></i>Fixora home services</span>
-      <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Expert repairs for the appliances you rely on</h1>
-      <p class="mt-3 max-w-2xl text-base leading-relaxed text-brand-100">From everyday essentials to big-ticket appliances, our local technicians make getting things working again simple. Browse the services below and find the right repair for your home.</p>
-      <div class="mt-6 flex flex-wrap gap-2 text-sm text-brand-100">
-        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="badge-check" class="me-1 inline h-3.5 w-3.5"></i>Verified technicians</span>
-        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="shield-check" class="me-1 inline h-3.5 w-3.5"></i>30-day warranty</span>
-        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="timer" class="me-1 inline h-3.5 w-3.5"></i>Same-day slots</span>
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-teal-800 py-16 text-white">
+    <div class="pointer-events-none absolute -start-24 top-0 h-72 w-72 rounded-full border border-white/10"></div>
+    <div class="pointer-events-none absolute -bottom-24 end-10 h-80 w-80 rounded-full bg-brand-500/20 blur-3xl"></div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-200 ring-1 ring-white/20"><i data-lucide="wrench" class="h-4 w-4"></i>Fixora home services</span>
+        <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Expert repairs for the appliances you rely on</h1>
+        <p class="mt-3 max-w-2xl text-base leading-relaxed text-brand-100">From everyday essentials to big-ticket appliances, our local technicians make getting things working again simple. Browse the services below and find the right repair for your home.</p>
+        <div class="mt-6 flex flex-wrap gap-2 text-sm text-brand-100">
+          <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="badge-check" class="me-1 inline h-3.5 w-3.5"></i>Verified technicians</span>
+          <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="shield-check" class="me-1 inline h-3.5 w-3.5"></i>30-day warranty</span>
+          <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="timer" class="me-1 inline h-3.5 w-3.5"></i>Same-day slots</span>
+        </div>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="dashboard.html" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-extrabold text-brand-900 shadow-lg transition hover:bg-brand-50"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book a Repair</a>
+          <a href="tel:+9118001234567" class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-white/15"><i data-lucide="phone-call" class="h-4 w-4"></i>Call Now</a>
+        </div>
+        <a href="index.html#repair-finder" class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-200 underline decoration-white/30 underline-offset-4 transition hover:text-white">Not sure what is wrong? Use the repair finder <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i></a>
+      </div>
+      <div class="relative">
+        <div class="relative overflow-hidden rounded-3xl border border-white/15 shadow-2xl">
+          <img src="https://images.pexels.com/photos/37492292/pexels-photo-37492292.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fixora technician repairing a home appliance" class="h-72 w-full object-cover sm:h-96" loading="eager" decoding="async">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-950/75 via-brand-950/10 to-transparent"></div>
+          <div class="absolute bottom-4 start-4 flex items-center gap-3 rounded-2xl bg-white/95 p-3.5 text-brand-950 shadow-xl backdrop-blur dark:bg-stone-900/95 dark:text-white">
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"><i data-lucide="badge-check" class="h-4 w-4"></i></span>
+            <div><p class="text-xs font-extrabold">85+ verified technicians</p><p class="text-[10px] font-semibold text-stone-500 dark:text-stone-400">Same-day slots across Mumbai</p></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ FILTER TABS ============ -->
   <section class="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8">
+    <div class="grid gap-3 sm:grid-cols-3">
+      <div class="rounded-2xl border border-brand-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900">
+        <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="search" class="h-5 w-5"></i></span><div><p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Visit charge</p><p class="text-lg font-extrabold text-stone-900 dark:text-white">₹249</p></div></div>
+        <p class="mt-2 text-xs leading-5 text-stone-600 dark:text-stone-300">Covers the on-site inspection and written quote. Waived when you approve the repair.</p>
+      </div>
+      <div class="rounded-2xl border border-brand-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900">
+        <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="wrench" class="h-5 w-5"></i></span><div><p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Repair labour</p><p class="text-lg font-extrabold text-stone-900 dark:text-white">From ₹299</p></div></div>
+        <p class="mt-2 text-xs leading-5 text-stone-600 dark:text-stone-300">Fixed before work starts. The quote lists labour and any parts needed, so nothing is added later.</p>
+      </div>
+      <div class="rounded-2xl border border-brand-200 bg-white p-5 shadow-sm dark:border-stone-700 dark:bg-stone-900">
+        <div class="flex items-center gap-3"><span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="package" class="h-5 w-5"></i></span><div><p class="text-xs font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Spare parts</p><p class="text-lg font-extrabold text-stone-900 dark:text-white">At actuals</p></div></div>
+        <p class="mt-2 text-xs leading-5 text-stone-600 dark:text-stone-300">Genuine or equivalent-grade parts, priced before fitting. The replaced part is handed back to you.</p>
+      </div>
+    </div>
+    <div class="mt-4 flex flex-col items-start justify-between gap-3 rounded-2xl bg-brand-50 px-5 py-4 dark:bg-stone-900 sm:flex-row sm:items-center">
+      <p class="flex items-start gap-2 text-sm leading-6 text-stone-700 dark:text-stone-300"><i data-lucide="info" class="mt-0.5 h-4 w-4 shrink-0 text-brand-600 dark:text-brand-300"></i>Each appliance below shows its visit charge and typical total repair cost. Final pricing is always confirmed before work begins.</p>
+      <a href="pricing.html" class="inline-flex shrink-0 items-center gap-2 rounded-lg bg-brand-700 px-4 py-2.5 text-sm font-extrabold text-white transition hover:bg-brand-800">Full pricing guide <i data-lucide="arrow-right" class="h-4 w-4 rtl-flip"></i></a>
+    </div>
+  </section>
+
+  <!-- ============ FILTER TABS ============ -->
+  <section class="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8">
     <div id="fxServiceTabs" class="flex flex-wrap items-center gap-2"></div>
     <p class="mt-3 text-xs text-slate-400">Prices shown are starting estimates. Final charges depend on inspection, model and parts.</p>
   </section>
@@ -68,6 +108,63 @@
       <div class="flex items-start gap-4">
         <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300"><i data-lucide="calendar-check" class="h-5 w-5"></i></span>
         <div><h3 class="font-extrabold text-slate-900 dark:text-white">Book in one tap</h3><p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Pick the appliance, pick a slot, and track your technician from the dashboard.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-100 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[.16em] text-brand-800 dark:bg-brand-500/10 dark:text-brand-200"><i data-lucide="badge-check" class="h-3.5 w-3.5"></i>Brands &amp; common questions</span>
+        <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-stone-900 dark:text-white sm:text-3xl">We service the brands already in your home</h2>
+        <p class="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">Our technicians carry tools and common spares for India's leading appliance brands. If your model is not listed, ask us — we will confirm coverage before booking.</p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Samsung</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">LG</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Whirlpool</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Bosch</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">IFB</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Haier</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Godrej</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Daikin</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Voltas</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Hitachi</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Faber</span>
+          <span class="rounded-full border border-brand-200 bg-white px-3 py-1.5 text-xs font-bold text-stone-700 dark:border-stone-700 dark:bg-stone-900 dark:text-stone-200">Siemens</span>
+        </div>
+      </div>
+      <div class="grid gap-3">
+        <details class="group rounded-2xl border border-brand-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900" open>
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-stone-900 dark:text-white">How is the visit charge calculated?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">The standard visit charge is ₹249 and covers travel, on-site diagnosis and a written quote. It is waived completely when you approve the repair, so you only pay for the work you agree to.</p>
+        </details>
+        <details class="group rounded-2xl border border-brand-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-stone-900 dark:text-white">Can ovens and dishwashers be repaired at home?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">Most built-in ovens, OTGs, convection ovens and dishwashers are diagnosed and repaired at home. If a part needs workshop-level service, the technician explains the timeline and cost before taking it away.</p>
+        </details>
+        <details class="group rounded-2xl border border-brand-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-stone-900 dark:text-white">How long does a typical repair take?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">Most repairs are completed in 45–90 minutes once approved. Jobs that need a special-order part are scheduled for a follow-up visit, and you approve the part cost first.</p>
+        </details>
+        <details class="group rounded-2xl border border-brand-200 bg-white p-5 dark:border-stone-700 dark:bg-stone-900">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-stone-900 dark:text-white">Are the spare parts genuine?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-stone-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">Yes. We fit genuine or equivalent-grade parts matched to your appliance model. Every repair includes a 30-day workmanship warranty, and replaced parts are handed back to you.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-800 to-brand-950 px-6 py-10 text-center text-white sm:px-12">
+      <div class="pointer-events-none absolute -start-10 -top-10 h-40 w-40 rounded-full border border-white/10"></div>
+      <div class="pointer-events-none absolute -bottom-14 -end-10 h-48 w-48 rounded-full border border-white/10"></div>
+      <div class="relative">
+        <h2 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Not sure which service you need?</h2>
+        <p class="mx-auto mt-2 max-w-lg text-sm leading-6 text-brand-100">Tell us the appliance and the symptom. We will point you to the right repair and confirm the visit charge upfront.</p>
+        <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="dashboard.html" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-extrabold text-brand-900 transition hover:bg-brand-50"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book a Repair</a>
+          <a href="tel:+9118001234567" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-white/15"><i data-lucide="phone-call" class="h-4 w-4"></i>Call Now · +91 1800 123 4567</a>
+        </div>
       </div>
     </div>
   </section>

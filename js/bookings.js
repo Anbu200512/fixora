@@ -3,7 +3,12 @@
   'use strict';
   var Fixora = window.Fixora;
 
-  var BASE_COST = { 'Refrigerator': 750, 'Washing Machine': 650, 'Air Conditioner': 900, 'Television': 700, 'Microwave Oven': 450, 'Dishwasher': 700, 'Water Heater': 550, 'Kitchen Appliance': 450 };
+  var BASE_COST = { 'Refrigerator': 750, 'Washing Machine': 650, 'Air Conditioner': 900, 'Television': 700, 'Microwave Oven': 450, 'Oven': 800, 'Dishwasher': 700, 'Water Heater': 550, 'Kitchen Appliance': 450 };
+
+  function baseCost(appliance) {
+    if (!appliance) return 0;
+    return BASE_COST[appliance] || BASE_COST[String(appliance).replace(/ Repair$/, '')] || 0;
+  }
 
   Fixora.bookings = {
     all: function () { return Fixora.get('fixora_bookings', []); },
@@ -69,7 +74,7 @@
       b.status = status;
       if (!b.history || b.history[b.history.length - 1] !== status) b.history = (b.history || []).concat(status);
       if (status === 'Completed') {
-        var base = BASE_COST[b.appliance] || 600;
+        var base = baseCost(b.appliance) || 600;
         var parts = Math.random() < 0.5 ? Math.round(Math.random() * 3) * 100 + 200 : 0;
         b.cost = base + parts + (opts.cost != null ? opts.cost : 0);
       } else if (status !== 'Completed' && b.cost == null && prev === 'Completed') {

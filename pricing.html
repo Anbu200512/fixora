@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pricing Guide | Fixora Appliance Repair</title>
-  <meta name="description" content="Fixora sample pricing guide — transparent starting prices for refrigerator, washing machine, AC, TV, microwave, dishwasher and water heater repairs in Mumbai.">
+  <meta name="description" content="Fixora's sample pricing guide — ₹249 diagnostic visit charges, transparent service charges and estimated repair costs for refrigerators, washing machines, ACs, ovens, dishwashers and more in Mumbai.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23883923'/%3E%3Cstop offset='1' stop-color='%23c45c3a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='5' fill='url(%23g)'/%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z' fill='white'/%3E%3C/svg%3E">
   <script>!function(){try{var t=JSON.parse(localStorage.getItem('fixora_theme')||'null');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}}();</script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -30,54 +30,100 @@
   <div id="fx-navbar"></div>
 
   <!-- ============ PAGE HEADER ============ -->
-  <section class="bg-gradient-to-br from-brand-950 via-brand-900 to-teal-800 py-16 text-white">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-200 ring-1 ring-white/20"><i data-lucide="receipt" class="h-4 w-4"></i>Fixora pricing guide</span>
-      <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Transparent pricing, no surprises</h1>
-      <p class="mt-3 max-w-2xl text-base leading-relaxed text-brand-100">All prices are illustrative starting estimates. Your technician inspects the appliance first, explains the fault, and you approve the final quote before any repair begins.</p>
-      <div class="mt-6 flex flex-wrap gap-2 text-sm text-brand-100">
-        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="search-check" class="me-1 inline h-3.5 w-3.5"></i>Diagnosis before quote</span>
-        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="hand-coins" class="me-1 inline h-3.5 w-3.5"></i>You approve the price</span>
-        <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="shield-check" class="me-1 inline h-3.5 w-3.5"></i>No surprise charges</span>
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-teal-800 py-16 text-white">
+    <div class="pointer-events-none absolute -start-24 top-0 h-72 w-72 rounded-full border border-white/10"></div>
+    <div class="pointer-events-none absolute -bottom-24 end-10 h-80 w-80 rounded-full bg-brand-500/20 blur-3xl"></div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.05fr_.95fr] lg:px-8">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-200 ring-1 ring-white/20"><i data-lucide="receipt" class="h-4 w-4"></i>Fixora pricing guide</span>
+        <h1 class="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">Transparent pricing, no surprises</h1>
+        <p class="mt-3 max-w-2xl text-base leading-relaxed text-brand-100">Every visit starts with a ₹249 diagnostic charge. You receive a clear quote for labour and parts, and you approve it before any repair begins. Approve the repair and the visit charge is waived.</p>
+        <div class="mt-6 flex flex-wrap gap-2 text-sm text-brand-100">
+          <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="search-check" class="me-1 inline h-3.5 w-3.5"></i>₹249 visit charge</span>
+          <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="hand-coins" class="me-1 inline h-3.5 w-3.5"></i>Waived on approval</span>
+          <span class="rounded-full bg-white/10 px-3 py-1 ring-1 ring-white/15"><i data-lucide="shield-check" class="me-1 inline h-3.5 w-3.5"></i>30-day warranty</span>
+        </div>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="dashboard.html" class="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-extrabold text-brand-900 shadow-lg transition hover:bg-brand-50"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book a Repair</a>
+          <a href="tel:+9118001234567" class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-white/15"><i data-lucide="phone-call" class="h-4 w-4"></i>Call Now</a>
+        </div>
+        <a href="index.html#repair-finder" class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-brand-200 underline decoration-white/30 underline-offset-4 transition hover:text-white">Not sure what you need? Use the repair finder <i data-lucide="arrow-right" class="h-3.5 w-3.5"></i></a>
+      </div>
+      <div class="relative">
+        <div class="relative overflow-hidden rounded-3xl border border-white/15 shadow-2xl">
+          <img src="https://images.pexels.com/photos/37492288/pexels-photo-37492288.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fixora technician preparing for a home appliance repair" class="h-72 w-full object-cover sm:h-96" loading="eager" decoding="async">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-950/75 via-brand-950/10 to-transparent"></div>
+          <div class="absolute bottom-4 start-4 flex items-center gap-3 rounded-2xl bg-white/95 p-3.5 text-brand-950 shadow-xl backdrop-blur dark:bg-stone-900/95 dark:text-white">
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-brand-500/20 dark:text-brand-200"><i data-lucide="receipt-indian-rupee" class="h-4 w-4"></i></span>
+            <div><p class="text-xs font-extrabold">₹249 visit fee</p><p class="text-[10px] font-semibold text-stone-500 dark:text-stone-400">Waived when you approve the repair</p></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ HOW PRICING WORKS ============ -->
   <section class="mx-auto max-w-7xl px-4 pt-12 sm:px-6 lg:px-8">
-    <div class="grid gap-5 sm:grid-cols-3">
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300"><i data-lucide="search" class="h-5 w-5"></i></span>
-        <h3 class="mt-3 font-extrabold text-slate-900 dark:text-white">Step 1 — Diagnosis</h3>
-        <p class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">The technician inspects the appliance on-site and identifies the exact fault with the right tools.</p>
+    <div class="mx-auto max-w-2xl text-center">
+      <span class="inline-flex items-center gap-2 rounded-full bg-brand-100 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[.16em] text-brand-800 dark:bg-brand-500/10 dark:text-brand-200"><i data-lucide="calculator" class="h-3.5 w-3.5"></i>How charges work</span>
+      <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-stone-900 dark:text-white sm:text-3xl">Three simple parts to every bill</h2>
+      <p class="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">No bundled “service packages”, no hidden extras. Here is exactly what you pay for and when.</p>
+    </div>
+    <div class="mt-8 grid gap-5 sm:grid-cols-3">
+      <div class="rounded-2xl border border-brand-200 bg-white p-6 shadow-sm dark:border-stone-700 dark:bg-stone-900">
+        <div class="flex items-center justify-between gap-3"><span class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="search" class="h-5 w-5"></i></span><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">Waived on approval</span></div>
+        <h3 class="mt-4 font-extrabold text-stone-900 dark:text-white">1. Service visit — ₹249</h3>
+        <p class="mt-1 text-sm leading-6 text-stone-600 dark:text-stone-300">Covers travel, on-site fault finding and a written repair quote. If you approve the repair, this charge is removed from your bill.</p>
       </div>
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-700 dark:bg-teal-500/10 dark:text-teal-300"><i data-lucide="file-check" class="h-5 w-5"></i></span>
-        <h3 class="mt-3 font-extrabold text-slate-900 dark:text-white">Step 2 — You approve</h3>
-        <p class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">A fixed quote lists labour and parts. Approve it and the diagnostic visit is free.</p>
+      <div class="rounded-2xl border border-brand-200 bg-white p-6 shadow-sm dark:border-stone-700 dark:bg-stone-900">
+        <div class="flex items-center justify-between gap-3"><span class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="wrench" class="h-5 w-5"></i></span><span class="rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-brand-700 dark:bg-stone-800 dark:text-brand-200">Quoted first</span></div>
+        <h3 class="mt-4 font-extrabold text-stone-900 dark:text-white">2. Repair labour — From ₹349</h3>
+        <p class="mt-1 text-sm leading-6 text-stone-600 dark:text-stone-300">A fixed labour charge based on the appliance and fault. The amount is confirmed in your quote before the technician starts work.</p>
       </div>
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"><i data-lucide="shield-check" class="h-5 w-5"></i></span>
-        <h3 class="mt-3 font-extrabold text-slate-900 dark:text-white">Step 3 — Warranty</h3>
-        <p class="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Repairs carry a 30-day workmanship warranty. Same fault returns? We fix it free.</p>
+      <div class="rounded-2xl border border-brand-200 bg-white p-6 shadow-sm dark:border-stone-700 dark:bg-stone-900">
+        <div class="flex items-center justify-between gap-3"><span class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-stone-800 dark:text-brand-300"><i data-lucide="package" class="h-5 w-5"></i></span><span class="rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-brand-700 dark:bg-stone-800 dark:text-brand-200">At actuals</span></div>
+        <h3 class="mt-4 font-extrabold text-stone-900 dark:text-white">3. Spare parts — At actuals</h3>
+        <p class="mt-1 text-sm leading-6 text-stone-600 dark:text-stone-300">Genuine or equivalent-grade parts are priced separately and approved by you. Fitting is included, and the old part is handed back.</p>
       </div>
+    </div>
+    <div class="mt-4 grid gap-3 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900 dark:border-amber-700/50 dark:bg-amber-500/10 dark:text-amber-200 sm:grid-cols-2">
+      <p class="flex items-start gap-2"><i data-lucide="badge-check" class="mt-0.5 h-4 w-4 shrink-0"></i><span><strong class="font-extrabold">Approve the repair:</strong> the ₹249 visit charge is waived, and you pay only the agreed labour and parts.</span></p>
+      <p class="flex items-start gap-2"><i data-lucide="info" class="mt-0.5 h-4 w-4 shrink-0"></i><span><strong class="font-extrabold">Decline the repair:</strong> you pay only the ₹249 diagnostic charge. No pressure and no obligation.</span></p>
     </div>
   </section>
 
-  <!-- ============ PRICING GRID (rendered by pricing.js) ============ -->
   <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-    <div id="fxPricingGrid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand-100 px-3 py-1 text-[11px] font-extrabold uppercase tracking-[.16em] text-brand-800 dark:bg-brand-500/10 dark:text-brand-200"><i data-lucide="receipt" class="h-3.5 w-3.5"></i>By appliance</span>
+        <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-stone-900 dark:text-white sm:text-3xl">Service charges &amp; estimated repair costs</h2>
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-stone-600 dark:text-stone-300">Each card shows the visit charge, a typical total repair range, what is included and what can add to the final bill.</p>
+      </div>
+      <a href="services.html" class="inline-flex items-center gap-2 text-sm font-extrabold text-brand-700 underline decoration-brand-300 underline-offset-4 dark:text-brand-300">Explore all services <i data-lucide="arrow-right" class="h-4 w-4 rtl-flip"></i></a>
+    </div>
+    <div id="fxPricingGrid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+    <p class="mt-4 text-xs leading-5 text-stone-500 dark:text-stone-400">Ranges cover parts and labour for the most common repairs. They are illustrative estimates for this demo — final costs are confirmed after inspection and your approval.</p>
+  </section>
+
+  <section class="border-y border-brand-100 bg-brand-50 py-14 dark:border-stone-800 dark:bg-stone-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-extrabold uppercase tracking-[.16em] text-brand-800 ring-1 ring-brand-200 dark:bg-stone-800 dark:text-brand-200 dark:ring-stone-700"><i data-lucide="list-checks" class="h-3.5 w-3.5"></i>Repair cost guide</span>
+        <h2 class="mt-3 text-2xl font-extrabold tracking-tight text-stone-900 dark:text-white sm:text-3xl">What common repairs typically cost</h2>
+        <p class="mt-3 text-sm leading-6 text-stone-600 dark:text-stone-300">Use these ranges to plan ahead. Each estimate includes standard labour for that job; the final quote depends on your model and the part required.</p>
+      </div>
+      <div id="fxRepairEstimates" class="mt-8 grid gap-4 md:grid-cols-2"></div>
+    </div>
   </section>
 
   <!-- ============ PRICE COMPARISON TABLE ============ -->
   <section class="mx-auto max-w-7xl px-4 pb-14 sm:px-6 lg:px-8">
     <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
-      <div><p class="text-xs font-bold uppercase tracking-[.18em] text-brand-700 dark:text-brand-300">At a glance</p><h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Compare services &amp; starting prices</h2></div>
-      <p class="max-w-md text-sm leading-6 text-slate-500 dark:text-slate-400">Check what’s included and what may add to the final quote. All prices are sample estimates.</p>
+      <div><p class="text-xs font-bold uppercase tracking-[.18em] text-brand-700 dark:text-brand-300">At a glance</p><h2 class="mt-2 text-2xl font-extrabold tracking-tight sm:text-3xl">Compare visit charges &amp; repair estimates</h2></div>
+      <p class="max-w-md text-sm leading-6 text-slate-500 dark:text-slate-400">Check the visit fee, typical repair range, what is included and what may add to the final quote. All prices are sample estimates.</p>
     </div>
-    <div class="w-full max-w-full overflow-x-auto rounded-2xl border border-brand-200 bg-white dark:border-stone-700 dark:bg-stone-900">
+    <div class="w-full max-w-full overflow-x-auto rounded-2xl border border-brand-200 bg-white [contain:paint] dark:border-stone-700 dark:bg-stone-900">
       <table class="w-full border-collapse text-start text-sm">
-        <thead class="bg-brand-50 text-xs uppercase tracking-wider text-brand-900 dark:bg-stone-800 dark:text-brand-200"><tr><th scope="col" class="px-4 py-4 md:px-5">Service</th><th scope="col" class="px-4 py-4 md:px-5">Starting at</th><th scope="col" class="hidden px-4 py-4 md:table-cell md:px-5">What's included</th><th scope="col" class="hidden px-4 py-4 md:table-cell md:px-5">Possible extras</th><th scope="col" class="px-4 py-4 md:px-5"><span class="sr-only">Booking</span></th></tr></thead>
+        <thead class="bg-brand-50 text-xs uppercase tracking-wider text-brand-900 dark:bg-stone-800 dark:text-brand-200"><tr><th scope="col" class="px-4 py-4 md:px-5">Service</th><th scope="col" class="px-4 py-4 md:px-5">Visit fee</th><th scope="col" class="px-4 py-4 md:px-5">Typical repair</th><th scope="col" class="hidden px-4 py-4 lg:table-cell lg:px-5">What is included</th><th scope="col" class="hidden px-4 py-4 lg:table-cell lg:px-5">Possible extras</th><th scope="col" class="px-4 py-4 md:px-5"><span class="sr-only">Booking</span></th></tr></thead>
         <tbody id="fxPricingCompare" class="divide-y divide-brand-100 dark:divide-stone-700"></tbody>
       </table>
     </div>
@@ -87,28 +133,46 @@
   <section class="mx-auto max-w-4xl px-4 pb-16 sm:px-6 lg:px-8">
     <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-800 dark:border-amber-700/50 dark:bg-amber-500/10 dark:text-amber-300">
       <p class="flex items-center gap-2 font-bold"><i data-lucide="info" class="h-4 w-4"></i>Important note</p>
-      <p class="mt-1">All prices are illustrative sample estimates for this demo website. Actual charges depend on the appliance model, fault complexity, and genuine spare parts required. This is not a real price list.</p>
+      <p class="mt-1">All prices are illustrative sample estimates for this demo website. Actual charges depend on the appliance model, fault complexity, location and genuine spare parts required. This is not a real price list.</p>
     </div>
 
-    <div class="mt-10 grid gap-3">
-      <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
-        <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Is the diagnostic visit really free?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Yes. When you approve the repair estimate, the diagnostic visit fee is waived. If you choose not to proceed, the standard diagnostic fee applies.</p>
-      </details>
-      <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
-        <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Will the final price ever exceed the quote?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">You approve the quote before work starts. If parts turn out costlier during the repair, we stop and confirm with you again — never surprise billing.</p>
-      </details>
-      <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
-        <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Are spare parts genuine?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Genuine or equivalent-grade parts are sourced for your appliance model and fitted on-site. The replaced old part is returned to you.</p>
-      </details>
+    <div class="mt-10">
+      <h2 class="text-2xl font-extrabold tracking-tight text-stone-900 dark:text-white">Pricing questions, answered</h2>
+      <div class="mt-5 grid gap-3">
+        <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900" open>
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">How much is the service visit?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">The standard visit and diagnostic charge is ₹249. It covers travel, on-site fault finding and a written quote. The charge is waived when you approve the repair; if you decline, you pay only ₹249.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Will the final price ever exceed the quote?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">You approve the quote before work starts. If a part turns out to be costlier once the appliance is opened, we stop and confirm the revised price with you — never surprise billing.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Is labour included in the estimated repair cost?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Yes. The repair ranges shown on this page include standard labour for that job. Any additional parts are listed separately in your quote and approved by you before fitting.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">Are spare parts genuine?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Genuine or equivalent-grade parts are sourced for your appliance model and fitted on-site. The replaced old part is returned to you.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">What if a part has to be ordered?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">The technician confirms the part price and expected arrival time first. The visit charge is waived when you approve the repair, and the follow-up fitting visit is included in the agreed quote.</p>
+        </details>
+        <details class="group rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+          <summary class="flex cursor-pointer items-center justify-between gap-4 text-sm font-extrabold text-slate-900 dark:text-white">How can I pay for the repair?<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition group-open:rotate-180 rtl-flip"></i></summary>
+          <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">In this demo, payments are simulated. In a real service you would pay by cash or UPI after the repair is tested and you are satisfied with the work.</p>
+        </details>
+      </div>
     </div>
 
-    <div class="mt-10 rounded-2xl bg-gradient-to-br from-blue-700 to-teal-600 p-8 text-center text-white">
-      <h2 class="text-2xl font-extrabold tracking-tight">Ready when you are</h2>
-      <p class="mt-2 text-sm text-blue-100">Book a repair in under a minute and track your technician live from the dashboard.</p>
-      <a href="dashboard.html" class="mt-5 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-blue-800 transition hover:bg-blue-50"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book a Repair</a>
+    <div class="mt-10 rounded-2xl bg-gradient-to-br from-brand-800 to-brand-950 p-8 text-center text-white">
+      <h2 class="text-2xl font-extrabold tracking-tight">Know the price before you book</h2>
+      <p class="mt-2 text-sm text-brand-100">Start with a ₹249 diagnostic visit. Approve the repair and the visit fee is waived, with a 30-day workmanship warranty included.</p>
+      <div class="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="dashboard.html" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-extrabold text-brand-900 transition hover:bg-brand-50"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book a Repair</a>
+        <a href="tel:+9118001234567" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 py-3 text-sm font-extrabold text-white transition hover:bg-white/15"><i data-lucide="phone-call" class="h-4 w-4"></i>Call Now · +91 1800 123 4567</a>
+      </div>
     </div>
   </section>
 

@@ -13,6 +13,11 @@
     var process = (s.process || []).map(function (p, i) {
       return '<div class="flex gap-3"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blue-100 text-xs font-bold text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">' + (i + 1) + '</span><p class="pt-0.5 text-sm text-slate-600 dark:text-slate-300">' + Fixora.esc(p) + '</p></div>';
     }).join('');
+    var includes = (s.includes || []).map(function (p) {
+      return '<li class="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300"><i data-lucide="check" class="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-600 dark:text-brand-300"></i>' + Fixora.esc(p) + '</li>';
+    }).join('');
+    var visitFee = s.serviceCharge != null ? Fixora.money(s.serviceCharge) : Fixora.money(249);
+    var repairRange = s.repairRange ? Fixora.money(s.repairRange[0]) + ' – ' + Fixora.money(s.repairRange[1]) : 'Quote after inspection';
     return '' +
       '<article id="sv-' + slug(s.id) + '" class="fx-service-card group flex flex-col overflow-hidden rounded-3xl border border-brand-200 bg-[#fffdf8] shadow-sm dark:border-stone-700 dark:bg-stone-900" data-cat="' + Fixora.esc(s.name) + '">' +
       '  <div class="relative h-40 overflow-hidden bg-stone-200">' +
@@ -24,19 +29,35 @@
       '  </div>' +
       '  <div class="flex flex-1 flex-col p-5 sm:p-6">' +
       '    <h3 class="text-xl font-extrabold tracking-tight text-stone-900 dark:text-white">' + Fixora.esc(s.name) + '</h3>' +
-      '    <p class="mt-2 line-clamp-2 text-sm leading-5 text-stone-600 dark:text-stone-300">' + Fixora.esc(s.desc) + '</p>' +
+      '    <p class="mt-2 text-sm leading-6 text-stone-600 dark:text-stone-300">' + Fixora.esc(s.desc) + '</p>' +
+      '    <div class="mt-4 grid grid-cols-2 gap-2 text-xs">' +
+      '      <div class="rounded-xl bg-brand-50 px-3 py-2.5 dark:bg-stone-800"><span class="block text-[10px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Visit charge</span><span class="mt-0.5 block text-sm font-extrabold text-brand-800 dark:text-brand-200">' + visitFee + '</span><span class="block text-[10px] text-stone-500 dark:text-stone-400">waived on approval</span></div>' +
+      '      <div class="rounded-xl border border-brand-100 px-3 py-2.5 dark:border-stone-700"><span class="block text-[10px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400">Typical repair</span><span class="mt-0.5 block text-sm font-extrabold text-stone-900 dark:text-white">' + repairRange + '</span><span class="block text-[10px] text-stone-500 dark:text-stone-400">parts + labour</span></div>' +
+      '    </div>' +
+      '    <p class="mt-2.5 flex items-center gap-1.5 text-[11px] font-semibold text-stone-500 dark:text-stone-400"><i data-lucide="clock" class="h-3.5 w-3.5 text-brand-600 dark:text-brand-300"></i>Typical visit: ' + Fixora.esc(s.time || '45–90 min') + '</p>' +
       '    <div class="mt-4 border-t border-brand-100 pt-3 dark:border-stone-700">' +
       '      <h4 class="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-300"><i data-lucide="stethoscope" class="h-4 w-4"></i>Common fixes</h4>' +
       '      <ul class="mt-2 space-y-1.5">' + problems + '</ul>' +
       '    </div>' +
-      '    <details class="group mt-3 rounded-xl border border-brand-200 dark:border-stone-700"><summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2.5 text-xs font-bold text-stone-800 dark:text-stone-100">Diagnosis & repair steps<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 transition group-open:rotate-180 rtl-flip"></i></summary>' +
-      '      <div class="px-3 pb-3 pt-1"><p class="mb-3 text-xs leading-5 text-stone-600 dark:text-stone-300">' + Fixora.esc(s.diag) + '</p><div class="grid gap-2">' + process + '</div><p class="mt-3 text-[11px] font-semibold text-stone-500 dark:text-stone-400">Sample estimate; final quote after inspection.</p></div></details>' +
+      '    <details class="group mt-3 rounded-xl border border-brand-200 dark:border-stone-700"><summary class="flex cursor-pointer items-center justify-between gap-3 px-3 py-2.5 text-xs font-bold text-stone-800 dark:text-stone-100">What’s included &amp; repair steps<i data-lucide="chevron-down" class="h-4 w-4 shrink-0 transition group-open:rotate-180 rtl-flip"></i></summary>' +
+      '      <div class="px-3 pb-3 pt-1"><h5 class="text-[10px] font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-300">What’s included</h5><ul class="mt-2 space-y-1.5">' + includes + '</ul><p class="mt-3 rounded-lg bg-brand-50 p-2.5 text-[11px] leading-5 text-stone-600 dark:bg-stone-800 dark:text-stone-300">' + Fixora.esc(s.diag) + '</p><h5 class="mt-3 text-[10px] font-extrabold uppercase tracking-wider text-brand-700 dark:text-brand-300">Repair steps</h5><div class="mt-2 grid gap-2">' + process + '</div><p class="mt-3 text-[11px] font-semibold text-stone-500 dark:text-stone-400">Sample estimate; final quote after inspection.</p></div></details>' +
+      '    <p class="mt-3 text-[11px] leading-5 text-stone-500 dark:text-stone-400"><span class="font-extrabold text-stone-700 dark:text-stone-200">Brands we service:</span> ' + Fixora.esc(s.brands || 'All major brands') + '</p>' +
       '    <div class="mt-auto flex flex-wrap items-center gap-2 pt-4">' +
       '      <button class="fx-book-appliance inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-700 px-3 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-brand-800" data-appliance="' + Fixora.esc(s.name) + '"><i data-lucide="calendar-check" class="h-4 w-4"></i>Book repair</button>' +
       '      <button class="fx-open-enquiry inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 px-3 py-2.5 text-sm font-bold text-stone-600 transition hover:bg-brand-50 hover:text-brand-800 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-800 dark:hover:text-brand-200" data-appliance="' + Fixora.esc(s.name) + '"><i data-lucide="message-square" class="h-4 w-4"></i><span class="hidden sm:inline">Ask</span></button>' +
       '    </div>' +
       '  </div>' +
       '</article>';
+  }
+
+  function scrollToHash() {
+    if (!location.hash) return;
+    var target = document.getElementById(location.hash.slice(1));
+    if (!target) return;
+    setTimeout(function () {
+      var top = target.getBoundingClientRect().top + window.scrollY - 96;
+      window.scrollTo({ top: top < 0 ? 0 : top, behavior: 'smooth' });
+    }, 160);
   }
 
   function renderServices() {
@@ -53,6 +74,7 @@
     wrap.innerHTML = list.map(serviceCard).join('');
     bindTabs();
     if (window.lucide) lucide.createIcons();
+    scrollToHash();
   }
 
   function bindTabs() {

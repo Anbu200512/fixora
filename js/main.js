@@ -230,6 +230,141 @@
         { id: 'p-parts', service: 'Spare Parts & Replacement', startingPrice: 300, included: ['Genuine / compatible parts', 'Fitting included in repair visit', 'Old part handed back'], additional: ['Parts quoted only after inspection', 'High-end OEM parts billed at actuals'], image: Fixora.IMG.techKitchen, icon: 'wrench' }
       ]);
     }
+
+    var SERVICE_DETAILS = {
+      'sv-fridge': {
+        serviceCharge: 249, repairRange: [499, 4500], time: '45–90 min',
+        brands: 'Samsung, LG, Whirlpool, Haier, Godrej, Bosch',
+        includes: ['Full cooling and electrical diagnosis', 'Labour for standard repairs', 'Basic spares up to ₹500', '30-day workmanship warranty']
+      },
+      'sv-washing': {
+        serviceCharge: 249, repairRange: [399, 3500], time: '45–90 min',
+        brands: 'Samsung, LG, IFB, Bosch, Whirlpool, Haier',
+        includes: ['Inlet, drain and spin test', 'Labour for pump and motor repairs', 'Basic spares up to ₹500', '30-day workmanship warranty']
+      },
+      'sv-ac': {
+        serviceCharge: 249, repairRange: [499, 6500], time: '45–120 min',
+        brands: 'Daikin, Voltas, LG, Samsung, Hitachi, Blue Star',
+        includes: ['Indoor and outdoor unit inspection', 'Filter and coil cleaning', 'Gas pressure check', '30-day workmanship warranty']
+      },
+      'sv-tv': {
+        serviceCharge: 249, repairRange: [349, 8000], time: '30–60 min diagnosis',
+        brands: 'Samsung, LG, Sony, Panasonic, Mi, TCL',
+        includes: ['Power and display diagnosis', 'Board-level repair assessment', 'Smart feature and software check', '30-day workmanship warranty']
+      },
+      'sv-microwave': {
+        serviceCharge: 249, repairRange: [299, 3000], time: '30–60 min',
+        brands: 'Samsung, LG, IFB, Bosch, Whirlpool',
+        includes: ['Safety and door interlock check', 'Heating and turntable diagnosis', 'Basic spares up to ₹300', '30-day workmanship warranty']
+      },
+      'sv-dishwasher': {
+        serviceCharge: 249, repairRange: [449, 3000], time: '45–90 min',
+        brands: 'Bosch, Siemens, IFB, LG, Samsung, Whirlpool',
+        includes: ['Wash and drain cycle test', 'Spray arm and filter cleaning', 'Labour for pump and drain repairs', '30-day workmanship warranty']
+      },
+      'sv-geyser': {
+        serviceCharge: 249, repairRange: [349, 3500], time: '30–60 min',
+        brands: 'AO Smith, Racold, Havells, Bajaj, V-Guard',
+        includes: ['Element and thermostat test', 'Leak and pressure valve check', 'Basic spares up to ₹300', '30-day workmanship warranty']
+      },
+      'sv-kitchen': {
+        serviceCharge: 249, repairRange: [299, 3000], time: '30–90 min',
+        brands: 'Prestige, Philips, Butterfly, Bosch, Faber, Elica',
+        includes: ['Appliance-specific safety check', 'Motor and heating diagnosis', 'Labour for standard repairs', '30-day workmanship warranty']
+      },
+      'sv-chimney': {
+        serviceCharge: 249, repairRange: [349, 2500], time: '45–90 min',
+        brands: 'Faber, Elica, Bosch, Hindware, Glen',
+        includes: ['Filter and suction check', 'Ignition and burner diagnosis', 'Deep-cleaning option', '30-day workmanship warranty']
+      },
+      'sv-oven': {
+        serviceCharge: 249, repairRange: [399, 6000], time: '60–120 min',
+        brands: 'Bosch, Siemens, IFB, Samsung, LG, Faber',
+        includes: ['Heating element and thermostat test', 'Door, hinge and fan inspection', 'Labour for standard repairs', '30-day workmanship warranty']
+      }
+    };
+
+    var PRICING_DETAILS = {
+      'p-diag': {
+        visitFee: 249, repairRange: null,
+        estimates: []
+      },
+      'p-fridge': {
+        visitFee: 249, repairRange: [499, 4500],
+        estimates: [{ job: 'Gas refilling', price: [1200, 2500] }, { job: 'Thermostat replacement', price: [700, 1500] }, { job: 'Door gasket replacement', price: [900, 1800] }, { job: 'Compressor replacement', price: [2800, 5500] }]
+      },
+      'p-washing': {
+        visitFee: 249, repairRange: [399, 3500],
+        estimates: [{ job: 'Drain pump replacement', price: [900, 1600] }, { job: 'Door lock assembly', price: [700, 1400] }, { job: 'Motor replacement', price: [2200, 3800] }, { job: 'Control board replacement', price: [2000, 4000] }]
+      },
+      'p-ac': {
+        visitFee: 249, repairRange: [499, 6500],
+        estimates: [{ job: 'Deep cleaning service', price: [600, 1200] }, { job: 'Gas refilling', price: [1800, 3500] }, { job: 'PCB repair', price: [2000, 4500] }, { job: 'Compressor replacement', price: [3500, 6500] }]
+      },
+      'p-tv': {
+        visitFee: 249, repairRange: [349, 9000],
+        estimates: [{ job: 'Power board repair', price: [1000, 2200] }, { job: 'Backlight replacement', price: [1200, 2500] }, { job: 'Motherboard repair', price: [2000, 4500] }, { job: 'LED panel replacement', price: [4000, 9000] }]
+      },
+      'p-microwave': {
+        visitFee: 249, repairRange: [299, 3000],
+        estimates: [{ job: 'Capacitor / diode replacement', price: [500, 1200] }, { job: 'Turntable motor', price: [600, 1200] }, { job: 'Control panel repair', price: [1000, 2200] }, { job: 'Magnetron replacement', price: [1200, 2500] }]
+      },
+      'p-dishwasher': {
+        visitFee: 249, repairRange: [449, 3500],
+        estimates: [{ job: 'Door seal replacement', price: [700, 1500] }, { job: 'Drain pump replacement', price: [1000, 1800] }, { job: 'Heating element', price: [1200, 2200] }, { job: 'Control board replacement', price: [1800, 3500] }]
+      },
+      'p-geyser': {
+        visitFee: 249, repairRange: [349, 5000],
+        estimates: [{ job: 'Pressure valve replacement', price: [600, 1200] }, { job: 'Thermostat replacement', price: [700, 1400] }, { job: 'Heating element', price: [800, 1600] }, { job: 'Tank replacement', price: [2500, 5000] }]
+      },
+      'p-oven': {
+        visitFee: 249, repairRange: [399, 6000],
+        estimates: [{ job: 'Door hinge / seal', price: [800, 2000] }, { job: 'Thermostat replacement', price: [900, 1800] }, { job: 'Heating element', price: [1200, 2200] }, { job: 'Control board repair', price: [2500, 5500] }]
+      },
+      'p-parts': {
+        visitFee: 249, repairRange: null,
+        estimates: []
+      }
+    };
+
+    var serviceList = Fixora.get('fixora_services', []);
+    var servicesChanged = false;
+    if (!serviceList.some(function (s) { return s.id === 'sv-oven'; })) {
+      serviceList.push({
+        id: 'sv-oven', name: 'Oven Repair', icon: 'flame', price: 399, active: true, image: Fixora.IMG.stoveOven,
+        problems: ['Oven not heating', 'Uneven baking or hot spots', 'Temperature dial inaccurate', 'Door not closing properly', 'Fan or rotisserie not working', 'Unit trips the power supply'],
+        desc: 'Built-in, convection, OTG and oven-microwave combos — heating faults, thermostat errors, fan issues, door hinges and control panels repaired at home.',
+        process: ['Share the oven type and fault', 'Technician safety-checks the unit', 'Heating and control tests on-site', 'Approved repair fitted and tested'],
+        diag: 'The technician tests the heating elements, thermostat, fan and door interlocks, then confirms whether the repair is best done at home or in the workshop.'
+      });
+      servicesChanged = true;
+    }
+    serviceList.forEach(function (s) {
+      var d = SERVICE_DETAILS[s.id];
+      if (!d) return;
+      Object.keys(d).forEach(function (k) {
+        if (s[k] == null) { s[k] = d[k]; servicesChanged = true; }
+      });
+    });
+    if (servicesChanged) Fixora.set('fixora_services', serviceList);
+
+    var priceList = Fixora.get('fixora_pricing', []);
+    var pricingChanged = false;
+    if (!priceList.some(function (p) { return p.id === 'p-oven'; })) {
+      priceList.push({
+        id: 'p-oven', service: 'Oven Repair', startingPrice: 399, included: ['On-site diagnosis', 'Heating element and thermostat checks', 'Standard labour', '30-day service warranty'], additional: ['Heating element replacement', 'Door hinge or seal', 'Control board replacement'], image: Fixora.IMG.stoveOven, icon: 'flame'
+      });
+      pricingChanged = true;
+    }
+    priceList.forEach(function (p) {
+      var d = PRICING_DETAILS[p.id];
+      if (!d) return;
+      Object.keys(d).forEach(function (k) {
+        if (p[k] == null) { p[k] = d[k]; pricingChanged = true; }
+      });
+    });
+    if (pricingChanged) Fixora.set('fixora_pricing', priceList);
+
     if (!Fixora.get('fixora_bookings')) {
       var b = [
         { id: 'b1', ref: 'FRX-7H4K2N', userId: 'u-demo', name: 'Rohan Mehta', email: 'rohan@example.com', phone: '+91 98765 43210', appliance: 'Washing Machine', issue: 'Not draining and showing error code', address: 'B-204, Palm Residency, Andheri West, Mumbai', date: Fixora.daysFromToday(-2), time: '11:00 AM - 01:00 PM', notes: 'Front load, 3 years old', status: 'Completed', technicianId: 't2', technician: 'Vijay Kumar', createdAt: new Date(Date.now() - 4 * 86400000).toISOString(), cost: 750, history: ['Requested', 'Confirmed', 'Technician Assigned', 'On the Way', 'In Progress', 'Completed'] },
@@ -449,7 +584,7 @@
 
   /* ---------- navbar ---------- */
   var PAGE_LABELS = {
-    index: 'Home 1', home2: 'Home 2', services: 'Services', pricing: 'Pricing', login: 'Login', signup: 'Sign up',
+    index: 'Home', home2: 'Home 2', services: 'Services', pricing: 'Pricing', login: 'Login', signup: 'Sign up',
     dashboard: 'Customer Dashboard', adminDashboard: 'Admin Dashboard', notfound: '404'
   };
 
@@ -473,7 +608,7 @@
     if (page === 'contact') active.contact = true;
 
     var homeDropdown = [
-      navItem(page === 'index', 'index.html', 'Home 1', '', 'home'),
+      navItem(page === 'index', 'index.html', 'Home', '', 'home'),
       navItem(page === 'home2', 'home2.html', 'Home 2', '', 'layout-grid')
     ].join('');
 
@@ -491,7 +626,7 @@
     var authArea = '<a href="login.html" class="rounded-xl bg-brand-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700">Login</a>';
 
     holder.innerHTML =
-      '<header class="border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">' +
+      '<header class="relative border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">' +
       '  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 px-4 sm:px-6 lg:px-8">' +
       '    <div class="flex items-center gap-3">' +
       '      <a href="index.html" class="flex items-center gap-2.5">' +
@@ -517,10 +652,10 @@
       '      <span class="mx-1 hidden h-6 w-px bg-slate-200 dark:bg-slate-700 lg:block"></span>' +
       '      <div class="hidden lg:flex items-center gap-0.5">' + authArea + '</div>' +
       '      <span class="mx-1 hidden h-6 w-px bg-slate-200 dark:bg-slate-700 lg:block"></span>' +
-      '      <button id="fxMenuBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden" aria-label="Open menu"><i data-lucide="menu" class="h-6 w-6"></i></button>' +
+      '      <button id="fxMenuBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800 lg:hidden" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu" class="h-6 w-6"></i></button>' +
       '    </div>' +
       '  </div>' +
-      '  <div id="fxMobileMenu" class="hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 lg:hidden">' +
+      '  <div id="fxMobileMenu" class="absolute inset-x-0 top-full z-50 mt-px hidden max-h-[80vh] overflow-y-auto overscroll-contain border-t border-slate-200 bg-white shadow-2xl dark:border-slate-800 dark:bg-slate-950 lg:hidden">' +
       '    <div class="px-4 py-3 space-y-1">' +
       '      <div class="fx-m-drop">' +
       '        <button type="button" class="fx-m-trigger flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800" aria-expanded="false">Home<i data-lucide="chevron-down" class="fx-m-chevron h-4 w-4 rtl-flip transition-transform"></i></button>' +
@@ -563,9 +698,10 @@
     var mobile = document.getElementById('fxMobileMenu');
     if (menuBtn && mobile) {
       menuBtn.addEventListener('click', function () {
-        var open = mobile.classList.toggle('hidden');
-        var icon = menuBtn.querySelector('i');
-        icon.setAttribute('data-lucide', open ? 'menu' : 'x');
+        var open = mobile.classList.toggle('hidden') === false;
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.innerHTML = '<i data-lucide="' + (open ? 'x' : 'menu') + '" class="h-6 w-6"></i>';
         if (window.lucide) lucide.createIcons();
       });
     }
@@ -640,7 +776,7 @@
       '        <div class="mt-4 flex flex-wrap gap-2 text-xs"><span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-800 dark:bg-stone-800 dark:text-stone-200">Verified technicians</span><span class="rounded-full bg-brand-100 px-3 py-1 font-semibold text-brand-800 dark:bg-stone-800 dark:text-stone-200">30-day warranty</span></div>' +
       '      </div>' +
       '      <div><h4 class="text-xs font-extrabold uppercase tracking-[.16em] text-stone-900 dark:text-white">Explore</h4><ul class="mt-4 space-y-2.5">' +
-      '        <li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="index.html">Home 1</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="home2.html">Home 2</a></li>' +
+      '        <li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="index.html">Home</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="home2.html">Home 2</a></li>' +
       '        <li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="services.html">Services</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="pricing.html">Pricing guide</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="about.html">About Fixora</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="contact.html">Contact</a></li></ul></div>' +
       '      <div><h4 class="text-xs font-extrabold uppercase tracking-[.16em] text-stone-900 dark:text-white">Your account</h4><ul class="mt-4 space-y-2.5"><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="dashboard.html">Customer dashboard</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="admin-dashboard.html">Admin dashboard</a></li><li><a class="text-sm text-stone-600 transition hover:text-brand-700 dark:text-stone-400 dark:hover:text-brand-300" href="login.html">Sign in</a></li></ul><h4 class="mt-6 text-xs font-extrabold uppercase tracking-[.16em] text-stone-900 dark:text-white">Popular services</h4><ul class="mt-3 space-y-2">' + svcLinks + '</ul></div>' +
       '      <div><h4 class="text-xs font-extrabold uppercase tracking-[.16em] text-stone-900 dark:text-white">We’re here to help</h4>' +

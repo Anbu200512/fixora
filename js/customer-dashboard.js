@@ -8,7 +8,9 @@
 
   function applianceOptions(preset) {
     return Fixora.get('fixora_services', []).map(function (s) {
-      return '<option value="' + Fixora.esc(s.name) + '"' + (s.name === preset ? ' selected' : '') + '>' + Fixora.esc(s.name) + ' (from ' + Fixora.money(s.price) + ')</option>';
+      var plain = s.name.replace(/ Repair$/, '');
+      var selected = preset && (preset === s.name || preset === plain || preset + ' Repair' === s.name);
+      return '<option value="' + Fixora.esc(s.name) + '"' + (selected ? ' selected' : '') + '>' + Fixora.esc(s.name) + ' (from ' + Fixora.money(s.price) + ')</option>';
     }).join('');
   }
 
@@ -94,9 +96,10 @@
       '  </div></div>';
   }
 
-  function renderBook(pageAppliance) {
+  function renderBook(pageAppliance, pageIssue) {
     var u = Fixora.currentUser();
     var preset = pageAppliance || '';
+    var issue = pageIssue || '';
     var dateVals = Fixora.bookings.nextDates(8);
     return '<div class="mx-auto max-w-3xl">' +
       '  <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900 md:p-8">' +
@@ -112,7 +115,7 @@
       '      <div data-field><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Service address *</label>' +
       '        <input id="bkAddress" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-blue-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-white" value="' + Fixora.esc(u.address || '') + '" placeholder="Flat / street / city"><p data-field-error class="hidden"></p></div>' +
       '      <div class="sm:col-span-2" data-field><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Issue description *</label>' +
-      '        <textarea id="bkIssue" rows="3" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-blue-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="e.g. Not cooling, making loud noise"></textarea><p data-field-error class="hidden"></p></div>' +
+      '        <textarea id="bkIssue" rows="3" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-blue-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="e.g. Not cooling, making loud noise">' + Fixora.esc(issue) + '</textarea><p data-field-error class="hidden"></p></div>' +
       '      <div class="sm:col-span-2"><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Additional notes</label>' +
       '        <input id="bkNotes" class="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:ring-2 focus:ring-blue-200 focus:outline-none dark:border-slate-600 dark:bg-slate-800 dark:text-white" placeholder="Brand, model, error code (optional)"></div>' +
       '      <div class="sm:col-span-2"><button type="submit" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-blue-800"><i data-lucide="calendar-check" class="h-4 w-4"></i>Confirm Booking Request</button></div>' +
@@ -175,14 +178,14 @@
 
     var trackable = active.filter(function (b) { return b.status !== 'Requested'; });
     return '<div class="grid gap-6">' +
-      '  <div class="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">' +
+      '  <div class="min-w-0 rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">' +
       '    <div class="flex flex-wrap items-center justify-between gap-3"><div><h2 class="text-xl font-extrabold text-slate-900 dark:text-white">Track Technician</h2>' +
       '      <p class="text-sm text-slate-500 dark:text-slate-400">Status shown is updated by the demo flow — this is not real GPS tracking.</p></div>' +
       '      <button id="fxSimAdvance" class="inline-flex items-center gap-2 rounded-xl border border-dashed border-blue-400 px-4 py-2 text-sm font-bold text-blue-700 dark:text-blue-300"><i data-lucide="refresh-cw" class="h-4 w-4 rtl-flip"></i>Simulate next status</button></div>' +
       '    <div class="mt-4"><label class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Active booking</label><div class="mt-1">' + select + '</div></div>' +
       '    <div id="fxTrackDetail" class="mt-5"></div>' +
       '  </div>' +
-      '  <div class="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 dark:border-amber-700/50 dark:bg-amber-500/10 dark:text-amber-300">' +
+      '  <div class="min-w-0 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 dark:border-amber-700/50 dark:bg-amber-500/10 dark:text-amber-300">' +
       '    <p class="flex items-center gap-2 font-bold"><i data-lucide="info" class="h-4 w-4"></i>About tracking</p>' +
       '    <p class="mt-1">This dashboard simulates technician status updates for demonstration. It does not use real GPS, SMS or live location services.</p></div>' +
       '</div>';
@@ -193,11 +196,11 @@
     var steps = Fixora.BOOKING_STATUSES.filter(function (s) { return s !== 'Cancelled'; }).map(function (s, i) {
       var done = i <= idx;
       var cur = i === idx;
-      return '<div class="flex flex-col items-center text-center">' +
-        '<div class="flex h-9 w-9 items-center justify-center rounded-full text-white ' + (done ? 'bg-emerald-500' : 'bg-slate-200 dark:bg-slate-700') + (cur ? ' ring-4 ring-emerald-200 dark:ring-emerald-500/20' : '') + '">' +
+      return '<div class="flex shrink-0 items-center gap-3 text-left md:flex-col md:items-center md:gap-0 md:text-center">' +
+        '<div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white ' + (done ? 'bg-emerald-500' : 'bg-slate-200 dark:bg-slate-700') + (cur ? ' ring-4 ring-emerald-200 dark:ring-emerald-500/20' : '') + '">' +
         '<i data-lucide="' + (done ? 'check' : 'circle') + '" class="h-4 w-4"></i></div>' +
-        '<p class="mt-2 max-w-[90px] text-[11px] font-semibold leading-tight ' + (cur ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400') + '">' + s + '</p></div>';
-    }).join('<div class="h-px w-6 self-center bg-slate-200 dark:bg-slate-700 md:w-10"></div>');
+        '<p class="max-w-none text-left text-[11px] font-semibold leading-tight md:mt-2 md:max-w-[90px] md:text-center ' + (cur ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400') + '">' + s + '</p></div>';
+    }).join('<div class="ms-[17px] h-5 w-px shrink-0 bg-slate-200 dark:bg-slate-700 md:ms-0 md:h-px md:w-6 md:self-center lg:w-10"></div>');
     var techCard = b.technicianId || b.technician
       ? '<div class="flex items-center gap-4 rounded-xl border border-slate-200 p-4 dark:border-slate-700">' +
         '<span class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-teal-600 text-base font-extrabold text-white">' + Fixora.esc(b.technician.split(' ').map(function (w) { return w[0]; }).join('')) + '</span>' +
@@ -210,7 +213,7 @@
       '<h3 class="font-extrabold text-slate-900 dark:text-white">' + Fixora.esc(b.appliance) + ' repair</h3>' +
       '<p class="text-xs text-slate-500 dark:text-slate-400">' + b.ref + ' · ' + Fixora.formatDate(b.date) + ', ' + Fixora.esc(b.time) + '</p></div>' +
       Fixora.statusBadge(b.status) + '</div>' +
-      '<div class="mt-5 flex items-stretch overflow-x-auto pb-2">' + steps + '</div>' +
+      '<div class="mt-5 flex flex-col md:flex-row md:items-stretch md:overflow-x-auto md:pb-2">' + steps + '</div>' +
       '<div class="mt-6">' + techCard + '</div></div>';
   }
 
@@ -298,7 +301,7 @@
   }
 
   /* ================= wiring ================= */
-  function setSection(section, params) {
+  function setSection(section, params, issue) {
     currentSection = section;
     document.querySelectorAll('.fx-sb-item').forEach(function (it) {
       var active = it.getAttribute('data-section') === section;
@@ -316,7 +319,7 @@
     document.getElementById('fxPageTitle').textContent = titles[section] || 'Dashboard';
     var main = document.getElementById('fxMain');
     if (section === 'overview') main.innerHTML = renderOverview();
-    else if (section === 'book') main.innerHTML = renderBook(params);
+    else if (section === 'book') main.innerHTML = renderBook(params, issue);
     else if (section === 'bookings') main.innerHTML = renderBookings();
     else if (section === 'track') main.innerHTML = renderTrack();
     else if (section === 'history') main.innerHTML = renderHistory();
@@ -494,7 +497,8 @@
   }
 
   function fixoraBaseCost(app) {
-    return { 'Refrigerator': 750, 'Washing Machine': 650, 'Air Conditioner': 900, 'Television': 700, 'Microwave Oven': 450, 'Dishwasher': 700, 'Water Heater': 550, 'Kitchen Appliance': 450 }[app];
+    var costs = { 'Refrigerator': 750, 'Washing Machine': 650, 'Air Conditioner': 900, 'Television': 700, 'Microwave Oven': 450, 'Oven': 800, 'Dishwasher': 700, 'Water Heater': 550, 'Kitchen Appliance': 450 };
+    return costs[app] || costs[String(app).replace(/ Repair$/, '')];
   }
 
   function openConfirmModal(b) {
@@ -633,11 +637,12 @@
 
     var query = new URLSearchParams(location.search);
     var bookParam = query.get('book');
+    var issueParam = query.get('issue') || '';
     var initial = query.get('section') || (bookParam ? 'book' : 'overview');
-    setSection(initial, bookParam);
+    setSection(initial, bookParam, issueParam);
     updateBadges();
     // clean query string
-    if (query.has('book') || query.has('section')) {
+    if (query.has('book') || query.has('issue') || query.has('section')) {
       history.replaceState({}, '', location.pathname);
     }
   }
